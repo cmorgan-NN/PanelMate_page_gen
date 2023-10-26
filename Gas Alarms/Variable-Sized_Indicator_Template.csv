@@ -1,0 +1,664 @@
+Visual Order: 1 X Origin: 0 Y Origin: 115 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Zone1 Fan#1 PSI Sw. Out 3 0 Yes Yes [%M0937]
+Visual Order: 2 X Origin: 0 Y Origin: 176 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Zone 2 Fan #2 PSI Sw. Out 3 0 Yes Yes [%M0940]
+Visual Order: 3 X Origin: 0 Y Origin: 155 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Zone 2 Fan #1 PSI Sw. Out 3 0 Yes Yes [%M0939]
+Visual Order: 4 X Origin: 0 Y Origin: 134 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+0 - Gas Alarms
+10/16/123 15:38:20 Page 3 Configuration: PM3K.PPS
+Variable-Sized Indicator Template(s) (continued)
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Zone 2 Fan #2 PSI Sw. Out 3 0 Yes Yes [%M0938]
+Visual Order: 5 X Origin: 0 Y Origin: 278 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Zone 5 Fan #1 PSI Sw. Out 3 0 Yes Yes [%M0945]
+Visual Order: 6 X Origin: 0 Y Origin: 256 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Zone 4 Fan #2 PSI Sw. Out 3 0 Yes Yes [%M0944]
+Visual Order: 7 X Origin: 0 Y Origin: 235 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Zone 4 Fan #1 PSI Sw. Out 3 0 Yes Yes [%M0943]
+Visual Order: 8 X Origin: 0 Y Origin: 215 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Zone 3 Fan #2 PSI Sw. Out 3 0 Yes Yes [%M0942]
+Visual Order: 9 X Origin: 0 Y Origin: 196 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Zone 3 Fan #1 PSI Sw. Out 3 0 Yes Yes [%M0941]
+0 - Gas Alarms
+10/16/123 15:38:20 Page 4 Configuration: PM3K.PPS
+Variable-Sized Indicator Template(s) (continued)
+Visual Order: 10 X Origin: 0 Y Origin: 380 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Zone 2 Blwr. PSI Sw. Out 3 0 Yes Yes [%M0952]
+Visual Order: 11 X Origin: 0 Y Origin: 359 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Zone 1 Blwr. PSI Sw. Out 3 0 Yes Yes [%M0951]
+Visual Order: 12 X Origin: 0 Y Origin: 338 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Zone 6 Fan #2 PSI Sw. Out 3 0 Yes Yes [%M0948]
+Visual Order: 13 X Origin: 0 Y Origin: 318 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Zone 6 Fan #1 PSI Sw. Out 3 0 Yes Yes [%M0947]
+Visual Order: 14 X Origin: 0 Y Origin: 297 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Zone 5 Fan #2 PSI Sw. Out 3 0 Yes Yes [%M0946]
+Visual Order: 15 X Origin: 63 Y Origin: 136 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+0 - Gas Alarms
+10/16/123 15:38:20 Page 5 Configuration: PM3K.PPS
+Variable-Sized Indicator Template(s) (continued)
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Zone 1 High Temp. Sw Out 3 0 Yes Yes [%M0957]
+Visual Order: 16 X Origin: 63 Y Origin: 116 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Zone 6 Blwr. PSI Sw. Out 3 0 Yes Yes [%M0956]
+Visual Order: 17 X Origin: 0 Y Origin: 436 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Zone 5 Blwr. PSI Sw. Out 3 0 Yes Yes [%M0955]
+Visual Order: 18 X Origin: 0 Y Origin: 418 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Zone 4 Blwr. PSI Sw. Out 3 0 Yes Yes [%M0954]
+Visual Order: 19 X Origin: 0 Y Origin: 400 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Zone 3 Blwr. PSI Sw. Out 3 0 Yes Yes [%M0953]
+Visual Order: 20 X Origin: 63 Y Origin: 238 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Zone 6 High Temp. Sw. 3 0 Yes Yes [%M0962]
+0 - Gas Alarms
+10/16/123 15:38:20 Page 6 Configuration: PM3K.PPS
+Variable-Sized Indicator Template(s) (continued)
+Visual Order: 21 X Origin: 63 Y Origin: 219 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Zone 5 High Temp. Sw. Out 3 0 Yes Yes [%M0961]
+Visual Order: 22 X Origin: 63 Y Origin: 199 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Zone 4 High Temp. Sw. Out 3 0 Yes Yes [%M0960]
+Visual Order: 23 X Origin: 63 Y Origin: 179 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Zone 3 High Temp. Sw. Out 3 0 Yes Yes [%M0959]
+Visual Order: 24 X Origin: 63 Y Origin: 158 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Zone 2 High Temp. Sw. Out 3 0 Yes Yes [%M0958]
+Visual Order: 25 X Origin: 126 Y Origin: 336 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Zone 6 Gas Max PSI Sw. 3 0 Yes Yes [%M0974]
+Visual Order: 26 X Origin: 126 Y Origin: 316 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+0 - Gas Alarms
+10/16/123 15:38:20 Page 7 Configuration: PM3K.PPS
+Variable-Sized Indicator Template(s) (continued)
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Z6 Gas Min. PSI Sw. Out 3 0 Yes Yes [%M0973]
+Visual Order: 27 X Origin: 126 Y Origin: 296 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Zone 5 Gas Max PSI Sw. 3 0 Yes Yes [%M0972]
+Visual Order: 28 X Origin: 126 Y Origin: 276 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Z5 Gas Min PSI Sw. 3 0 Yes Yes [%M0971]
+Visual Order: 29 X Origin: 126 Y Origin: 256 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Zone 4 Gas Max PSI Sw. 3 0 Yes Yes [%M0970]
+Visual Order: 30 X Origin: 126 Y Origin: 236 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Z4 Gas Min. PSI Sw. 3 0 Yes Yes [%M0969]
+Visual Order: 31 X Origin: 126 Y Origin: 216 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Z3 Gas Max PSI Sw. 3 0 Yes Yes [%M0968]
+0 - Gas Alarms
+10/16/123 15:38:20 Page 8 Configuration: PM3K.PPS
+Variable-Sized Indicator Template(s) (continued)
+Visual Order: 32 X Origin: 127 Y Origin: 196 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Z3 Gas Min. PSI Sw. 3 0 Yes Yes [%M0967]
+Visual Order: 33 X Origin: 126 Y Origin: 176 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Z2 Gas Max PSI Sw. 3 0 Yes Yes [%M0966]
+Visual Order: 34 X Origin: 126 Y Origin: 156 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Z2 Gas Min PSI Out 3 0 Yes Yes [%M0965]
+Visual Order: 35 X Origin: 126 Y Origin: 136 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Z1 High Gas PSI Sw. 3 0 Yes Yes [%M0964]
+Visual Order: 36 X Origin: 126 Y Origin: 116 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Z1 Gas Min. PSI Sw. Out 3 0 Yes Yes [%M0963]
+Visual Order: 37 X Origin: 190 Y Origin: 116 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+0 - Gas Alarms
+10/16/123 15:38:20 Page 9 Configuration: PM3K.PPS
+Variable-Sized Indicator Template(s) (continued)
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Z1 Check Mod. Valve Pos. 3 0 Yes Yes [%M0975]
+Visual Order: 38 X Origin: 190 Y Origin: 221 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Z6 Check Mod. Valve pos. 3 0 Yes Yes [%M0980]
+Visual Order: 39 X Origin: 190 Y Origin: 200 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Z5 Check Mod. Valve Pos. 3 0 Yes Yes [%M0979]
+Visual Order: 40 X Origin: 190 Y Origin: 179 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Z4 Check Mod. Valve Pos. 3 0 Yes Yes [%M0978]
+Visual Order: 41 X Origin: 190 Y Origin: 158 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Z3 Check Mod. Valve Pos. 3 0 Yes Yes [%M0977]
+Visual Order: 42 X Origin: 190 Y Origin: 137 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Z2 Check Mod. Valve Pos. 3 0 Yes Yes [%M0976]
+0 - Gas Alarms
+10/16/123 15:38:20 Page 10 Configuration: PM3K.PPS
+Variable-Sized Indicator Template(s) (continued)
+Visual Order: 43 X Origin: 190 Y Origin: 242 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Load Speed On=Min Spd. 3 0 Yes Yes [%M0141]
+Visual Order: 44 X Origin: 250 Y Origin: 139 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Start Cir. Fan Zone 2 3 0 Yes Yes [%M0168]&~[%M0146]
+Visual Order: 45 X Origin: 250 Y Origin: 117 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Start Cir.Fan Zone 1 3 0 Yes Yes [%M0165]&~[%M0143]
+Visual Order: 46 X Origin: 250 Y Origin: 227 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Start Cir. Fan Zone 6 3 0 Yes Yes [%M0180] & ~[%M0158]
+Visual Order: 47 X Origin: 250 Y Origin: 205 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Start Cir. Fan Zone 5 3 0 Yes Yes [%M0177]& ~[%M0155]
+Visual Order: 48 X Origin: 250 Y Origin: 183 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+0 - Gas Alarms
+10/16/123 15:38:20 Page 11 Configuration: PM3K.PPS
+Variable-Sized Indicator Template(s) (continued)
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Start Cir. Fan Zone 4 3 0 Yes Yes [%M0174] &~[%M0152]
+Visual Order: 49 X Origin: 250 Y Origin: 161 X Size: 56 Y Size: 16
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Alarm Device Name:
+Indicator States
+Alarm Message Pen
+Color
+Fill
+Color
+Alarm Alarm
+Ack
+Conditional Expression
+Start Cir. Fan Zone 3 3 0 Yes Yes [%M0171] & ~[%M0149]
