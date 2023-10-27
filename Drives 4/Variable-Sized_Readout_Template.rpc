@@ -1,0 +1,75 @@
+Variable-Sized Readout Template(s)
+Visual Order: 31 X Origin: 29 Y Origin: 243 X Size: 24 Y Size: 16 Font: Normal Deadband Range: 0% Alarm Ack: Yes
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Foreground Color: 6 Background Color: 0 Text Direction: Horizontal
+Decimal Places: 0
+Control Arrow Position: Left Control Arrow Display Flag: Always
+Alarm Device Name:
+Value Expression: [%R0012]
+High Alarm Expression:
+Low Alarm Expression:
+Visual Order: 50 X Origin: 28 Y Origin: 285 X Size: 48 Y Size: 32 Font: Quad Deadband Range: 0% Alarm Ack: Yes
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Foreground Color: 18 Background Color: 18 Text Direction: Horizontal
+Decimal Places: 0
+Control Arrow Position: Left Control Arrow Display Flag: Always
+Alarm Device Name:
+Value Expression:
+High Alarm Expression:
+Low Alarm Expression:
+Control Definitions
+Input Value Expression: [?]*([?]>=0)*([?]<=40)+([?]<0)*[%R0012]+([?]>40)*[%R0012]
+Target Word Address: [%R0012]
+Password Protection: None
+5 - Drives 4
+10/16/123 15:38:20 Page 58 Configuration: PM3K.PPS
+Variable-Sized Readout Template(s) (continued)
+Visual Order: 63 X Origin: 29 Y Origin: 197 X Size: 24 Y Size: 16 Font: Normal Deadband Range: 0% Alarm Ack: Yes
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Foreground Color: 2 Background Color: 0 Text Direction: Horizontal
+Decimal Places: 0
+Control Arrow Position: Left Control Arrow Display Flag: Always
+Alarm Device Name:
+Value Expression: [%R0112]
+High Alarm Expression:
+Low Alarm Expression:
+Visual Order: 90 X Origin: 139 Y Origin: 243 X Size: 24 Y Size: 16 Font: Normal Deadband Range: 0% Alarm Ack: Yes
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Foreground Color: 6 Background Color: 0 Text Direction: Horizontal
+Decimal Places: 0
+Control Arrow Position: Left Control Arrow Display Flag: Always
+Alarm Device Name:
+Value Expression: [%R0009]
+High Alarm Expression:
+Low Alarm Expression:
+Visual Order: 109 X Origin: 138 Y Origin: 285 X Size: 48 Y Size: 32 Font: Quad Deadband Range: 0% Alarm Ack: Yes
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Foreground Color: 18 Background Color: 18 Text Direction: Horizontal
+Decimal Places: 0
+Control Arrow Position: Left Control Arrow Display Flag: Always
+Alarm Device Name:
+Value Expression:
+High Alarm Expression:
+Low Alarm Expression:
+Control Definitions
+Input Value Expression: [?]*([?]>=0)*([?]<=65)+([?]<0)*[%R0009]+([?]>65)*[%R0009]
+Target Word Address: [%R0009]
+Password Protection: None
+Visual Order: 120 X Origin: 139 Y Origin: 197 X Size: 24 Y Size: 16 Font: Normal Deadband Range: 0% Alarm Ack: Yes
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Foreground Color: 2 Background Color: 0 Text Direction: Horizontal
+Decimal Places: 0
+Control Arrow Position: Left Control Arrow Display Flag: Always
+Alarm Device Name:
+Value Expression: [%R0109]
+High Alarm Expression:
+5 - Drives 4
+10/16/123 15:38:20 Page 59 Configuration: PM3K.PPS
+Variable-Sized Readout Template(s) (continued)
+Low Alarm Expression: 

@@ -7,20 +7,29 @@
 ####################### 
 # Theory of Operation #
 #######################
-# Take a directory full of CSVs as an input and create a python program that generates a PanelMate HMI Page 
-# 1. Read in each CSV as a seperate dictionary nested within a main page dictionary (name derived from top level directory)
+# Take a directory full of Raw PanelMate Configurations files, which are different sections of a panelmate configuration PDF copied
+# and pasted into a file with an extension of .rpc, as an input and create a python program that generates a rendered PanelMate HMI Page graphical output
+# 1. parse each RPC as a seperate dictionary nested within a main page dictionary (name derived from top level directory)
 # 2. Iterate through each nested dictionary, rendering the textual python code to a .py file
 
 # Tree View of inputs:
 # Top_Level_Directory (HMI Page name is derived from this)
 # Top_Level_Directory/
-# Top_Level_Directory/Static_Grapic_Data_Line_Elements.csv
-# Top_Level_Directory/Static_Grapic_Data_Rectangle_Elements.csv
-# Top_Level_Directory/Static_Grapic_Data_Text_Elements.csv
-# Top_Level_Directory/Variable-Sized_Indicator_Template.csv
-# Top_Level_Directory/Variable-Sized_Readout_Template.csv
-# Top_Level_Directory/Variable-Sized_Graphic_Template.csv
-# Top_Level_Directory/Variable-Sized_Control_Button_Template.csv
+# Top_Level_Directory/Static_Grapic_Data_Line_Elements.rpc
+# Top_Level_Directory/Static_Grapic_Data_Rectangle_Elements.rpc
+# Top_Level_Directory/Static_Grapic_Data_Text_Elements.rpc
+# Top_Level_Directory/Variable-Sized_Indicator_Template.rpc
+# Top_Level_Directory/Variable-Sized_Readout_Template.rpc
+# Top_Level_Directory/Variable-Sized_Graphic_Template.rpc
+# Top_Level_Directory/Variable-Sized_Control_Button_Template.rpc
+
+#TODO:-[ ]- create Static_Grapic_Data_Line_Elements.rpc parser
+#TODO:-[ ]- create Static_Grapic_Data_Rectangle_Elements.rpc parser
+#TODO:-[ ]- create Static_Grapic_Data_Text_Elements.rpc parser
+#TODO:-[X]- create Variable-Sized_Indicator_Template.rpc parser
+#TODO:-[ ]- create Variable-Sized_Readout_Template.rpc parser
+#TODO:-[ ]- create Variable-Sized_Graphic_Template.rpc parser
+#TODO:-[ ]- create Variable-Sized_Control_Button_Template.rpc parser
 
 #########
 # Begin #

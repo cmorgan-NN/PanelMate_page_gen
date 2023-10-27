@@ -20,52 +20,9 @@
 #
 # Everything below Indicator States is a dict nested in Indicator States
 #   this dict is a representation of a table from the PanelMate report
+
+from Element_Parsers import *
 class VSIndicator:
-    ############# 
-    # Functions #
-    #############
-
-    # Function to remove page breaks from PanelMate 
-    #   preprocessed Variable-Sized_Indicator_Template report elements 
-    def removePageBreaks(preprocessedVS_IndicatorFileLines_Raw):
-        #find page breaks
-        lineNumber = 0
-        pageBreakLines = []
-        for line in preprocessedVS_IndicatorFileLines_Raw:
-            lineNumber += 1
-            if 'Page' and 'Configuration' in line: #the page line contains Page and Configuration
-                pageBreakLines.append(lineNumber - 1) #the line before a page line is unwanted
-                pageBreakLines.append(lineNumber)
-                pageBreakLines.append(lineNumber + 1) #and the line after a page line is unwanted
-
-        #create a new list of data without page breaks
-        lineNumber = 0
-        preprocessedVS_IndicatorFileLines = []
-        for line in preprocessedVS_IndicatorFileLines_Raw:
-            lineNumber += 1
-            if lineNumber not in pageBreakLines:
-                preprocessedVS_IndicatorFileLines.append(line)
-
-        #passback data
-        return preprocessedVS_IndicatorFileLines
-
-
-    # Function to seperate visual orders and return list
-    def seperateVSIndicatorVisualOrders(preprocessedVS_IndicatorFileLines):
-        VSIndicatorVOs = []
-        VSIndicatorVO= []
-        lineNumber = 0
-
-        for line in preprocessedVS_IndicatorFileLines:# A Visual Order is always 13 lines long
-            lineNumber += 1
-            VSIndicatorVO.append(line) 
-            if (lineNumber == 13):     
-                lineNumber = 0
-                VSIndicatorVOs.append(VSIndicatorVO.copy())
-                VSIndicatorVO.clear()
-
-        return VSIndicatorVOs
-
 
     # Function to parse a list of Visual Orders and their elements into a dictionary
     def parseVisualOrders(visualOrderElementsList):
@@ -75,15 +32,11 @@ class VSIndicator:
         #############
 
         #Visual Order String Variables
-        keyVisualOrder = 'Visual Order'
-        keyXOrigin = 'X Origin'
-        keyYOrigin = 'Y Origin'
-        keyXSize = 'X Size'
-        keyYSize = 'Y Size'
-        keyRefreshAffectedGraphicsOnline = 'Refresh Affected Graphics Online'
-        keyEnableConditionalVisibility = 'Enable Conditional Visibility'
-        keyVisibilityExpression = 'Visibility Expression'
-        keyAlarmDeviceName = 'Alarm Device Name'
+        elements = ['Visual Order: ','X Origin: ','Y Origin: ',
+                    'X Size: ','Y Size: ',
+                    'Refresh Affected Graphics Online? ',
+                    'Enable Conditional Visibility? ',
+                    'Visibility Expression: ','Alarm Device Name: ']
         # Visual Order Indicator States table String Variables
         keyAlarmMessage = 'Alarm Message'
         keyPenColor = 'Pen Color'
@@ -92,91 +45,101 @@ class VSIndicator:
         keyAlarmAck = 'Alarm Ack'
         keyConditionalExpression = 'Conditional Expression'
 
+        element_number = 0
         visualOrders = {}
         for unparsedVisualOrder in visualOrderElementsList:
             visualOrder = {}
             for line in unparsedVisualOrder: #Parse each Visual Order values
-
+                
                 ################
                 # Parse line 1 #
                 ################
+                
+                #This voodoo should parse out anything in the elements list
+                #FIXME: Change this to work by member number
+                for member in elements:
+                    if (member in line):
+                        parsed_element = Element_Parsers.element_parser(member, elements[elements.index(member) + 1], line)
+                        visualOrder.update(parsed_element.get('element')) 
+                        line = parsed_element.get('remaining_line')
+                        elements.remove(member)
 
-                #extract Visual Order value
-                if (line.find(keyVisualOrder + ': ') == 0):  
-                    line = line.lstrip(keyVisualOrder + ': ')
-                    valVisualOrder = line[0:(line.find(' '))]  
-                    visualOrder.update({keyVisualOrder : valVisualOrder})
-                    line = line.lstrip(valVisualOrder + ' ')
+#                #extract Visual Order value
+#                if (line.find(keyVisualOrder + ': ') == 0):  
+#                    line = line.lstrip(keyVisualOrder + ': ')
+#                    valVisualOrder = line[0:(line.find(' '))]  
+#                    visualOrder.update({keyVisualOrder : valVisualOrder})
+#                    line = line.lstrip(valVisualOrder + ' ')
 
-                #extract X Origin
-                if  (line.find(keyXOrigin + ': ') == 0):  
-                    line = line.lstrip(keyXOrigin + ': ') 
-                    valXOrigin = line[0:(line.find(' '))]  
-                    visualOrder.update({keyXOrigin : valXOrigin})
-                    line = line.lstrip(valXOrigin + ' ')
-
-                #extract Y Origin
-                if  (line.find(keyYOrigin + ': ') == 0):  
-                    line = line.lstrip(keyYOrigin + ': ') 
-                    valYOrigin = line[0:(line.find(' '))]  
-                    visualOrder.update({keyYOrigin : valYOrigin})
-                    line = line.lstrip(valYOrigin + ' ')
-
-                #extract X Size  
-                if  (line.find(keyXSize + ': ') == 0):  
-                    line = line.lstrip(keyXSize + ': ') 
-                    valXSize = line[0:(line.find(' '))]  
-                    visualOrder.update({keyXSize : valXSize})
-                    line = line.lstrip(valXSize + ' ')
-
-                #extract Y Size  
-                if  (line.find(keyYSize + ': ') == 0):  
-                    line = line.lstrip(keyYSize + ': ') 
-                    valYSize = line[0:(line.find(' '))]  
-                    visualOrder.update({keyYSize : valYSize})
-                    line = line.lstrip(valYSize + ' ')
-
-                ################
-                # Parse line 2 #
-                ################
-
-                #extract Refresh Affected Graphics Online
-                if  (line.find(keyRefreshAffectedGraphicsOnline + '? ') == 0):  
-                    line = line.lstrip(keyRefreshAffectedGraphicsOnline + '? ') 
-                    valRefreshAffectedGraphicsOnline = line[0:(line.find(' '))]  
-                    visualOrder.update({keyRefreshAffectedGraphicsOnline : valRefreshAffectedGraphicsOnline})
-
-                ################
-                # Parse line 3 #
-                ################
-
-                #extract Enable Conditional Visibility
-                if  (line.find(keyEnableConditionalVisibility + '? ') == 0):  
-                    line = line.lstrip(keyEnableConditionalVisibility + '? ') 
-                    valEnableConditionalVisibility = line[0:(line.find(' '))]  
-                    visualOrder.update({keyEnableConditionalVisibility : valEnableConditionalVisibility})
-                    line = line.lstrip(valEnableConditionalVisibility + ' ')
-
-                #extract Visibility Expression
-                if  (line.find(keyVisibilityExpression + ':') == 0):  
-                    line = line.lstrip(keyVisibilityExpression + ': ') 
-                    valVisibilityExpression = line[0:(line.find(' '))]  
-                    visualOrder.update({keyVisibilityExpression : valVisibilityExpression})
-
-                ################
-                # Parse line 4 #
-                ################
-
-                #extract Alarm Device Name
-                if  (line.find(keyAlarmDeviceName + ':') == 0):  
-                    line = line.lstrip(keyAlarmDeviceName + ': ') 
-                    valAlarmDeviceName = line[0:(line.find(' '))]  
-                    visualOrder.update({keyAlarmDeviceName : valAlarmDeviceName})
-
-                ########################
-                # Lines 5 - 12 Skipped #
-                ########################
-
+#                #extract X Origin
+#                if  (line.find(keyXOrigin + ': ') == 0):  
+#                    line = line.lstrip(keyXOrigin + ': ') 
+#                    valXOrigin = line[0:(line.find(' '))]  
+#                    visualOrder.update({keyXOrigin : valXOrigin})
+#                    line = line.lstrip(valXOrigin + ' ')
+#
+#                #extract Y Origin
+#                if  (line.find(keyYOrigin + ': ') == 0):  
+#                    line = line.lstrip(keyYOrigin + ': ') 
+#                    valYOrigin = line[0:(line.find(' '))]  
+#                    visualOrder.update({keyYOrigin : valYOrigin})
+#                    line = line.lstrip(valYOrigin + ' ')
+#
+#                #extract X Size  
+#                if  (line.find(keyXSize + ': ') == 0):  
+#                    line = line.lstrip(keyXSize + ': ') 
+#                    valXSize = line[0:(line.find(' '))]  
+#                    visualOrder.update({keyXSize : valXSize})
+#                    line = line.lstrip(valXSize + ' ')
+#
+#                #extract Y Size  
+#                if  (line.find(keyYSize + ': ') == 0):  
+#                    line = line.lstrip(keyYSize + ': ') 
+#                    valYSize = line[0:(line.find(' '))]  
+#                    visualOrder.update({keyYSize : valYSize})
+#                    line = line.lstrip(valYSize + ' ')
+#
+#                ################
+#                # Parse line 2 #
+#                ################
+#
+#                #extract Refresh Affected Graphics Online
+#                if  (line.find(keyRefreshAffectedGraphicsOnline + '? ') == 0):  
+#                    line = line.lstrip(keyRefreshAffectedGraphicsOnline + '? ') 
+#                    valRefreshAffectedGraphicsOnline = line[0:(line.find(' '))]  
+#                    visualOrder.update({keyRefreshAffectedGraphicsOnline : valRefreshAffectedGraphicsOnline})
+#
+#                ################
+#                # Parse line 3 #
+#                ################
+#
+#                #extract Enable Conditional Visibility
+#                if  (line.find(keyEnableConditionalVisibility + '? ') == 0):  
+#                    line = line.lstrip(keyEnableConditionalVisibility + '? ') 
+#                    valEnableConditionalVisibility = line[0:(line.find(' '))]  
+#                    visualOrder.update({keyEnableConditionalVisibility : valEnableConditionalVisibility})
+#                    line = line.lstrip(valEnableConditionalVisibility + ' ')
+#
+#                #extract Visibility Expression
+#                if  (line.find(keyVisibilityExpression + ':') == 0):  
+#                    line = line.lstrip(keyVisibilityExpression + ': ') 
+#                    valVisibilityExpression = line[0:(line.find(' '))]  
+#                    visualOrder.update({keyVisibilityExpression : valVisibilityExpression})
+#
+#                ################
+#                # Parse line 4 #
+#                ################
+#
+#                #extract Alarm Device Name
+#                if  (line.find(keyAlarmDeviceName + ':') == 0):  
+#                    line = line.lstrip(keyAlarmDeviceName + ': ') 
+#                    valAlarmDeviceName = line[0:(line.find(' '))]  
+#                    visualOrder.update({keyAlarmDeviceName : valAlarmDeviceName})
+#
+#                ########################
+#                # Lines 5 - 12 Skipped #
+#                ########################
+#
                 ##################
                 # Parse Line 13  #
                 ##################

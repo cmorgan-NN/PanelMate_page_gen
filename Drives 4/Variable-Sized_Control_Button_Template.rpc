@@ -1,0 +1,21 @@
+Variable-Sized Control Button Template(s)
+Visual Order: 1 X Origin: 443 Y Origin: 426 X Size: 85 Y Size: 38
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Lens Color: 18
+Control Type: Page Change Expression: 01
+Visual Order: 3 X Origin: 443 Y Origin: 376 X Size: 85 Y Size: 38
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Lens Color: 18
+Control Type: Page Change Expression: 04
+Visual Order: 5 X Origin: 443 Y Origin: 324 X Size: 85 Y Size: 41
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Lens Color: 18
+Control Type: Normaly Open, Momentary Reference: [%M0233]
+Visual Order: 124 X Origin: 443 Y Origin: 271 X Size: 85 Y Size: 41
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Lens Color: 18
+Control Type: Normaly Open, Momentary Reference: [%M0988]
