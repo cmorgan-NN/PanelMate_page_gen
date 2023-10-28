@@ -1,7 +1,8 @@
 #For testing Parsers :P
 from Parser import *
 
-Parser = Parser
-vSIndicator = Parser.vSIndicator('Gas Alarms\Variable-Sized_Indicator_Template.rpc')
+parsedVisualOrders = Parser.vSIndicator('Gas Alarms\Variable-Sized_Indicator_Template.rpc')
 
-print(vSIndicator)
+#parsedVisualOrders = Parser.vSReadout('Drives 4\Variable-Sized_Readout_Template.rpc')
+
+print(parsedVisualOrders)

@@ -27,7 +27,7 @@
 #TODO:-[ ]- create Static_Grapic_Data_Rectangle_Elements.rpc parser
 #TODO:-[ ]- create Static_Grapic_Data_Text_Elements.rpc parser
 #TODO:-[X]- create Variable-Sized_Indicator_Template.rpc parser
-#TODO:-[ ]- create Variable-Sized_Readout_Template.rpc parser
+#TODO:-[X]- create Variable-Sized_Readout_Template.rpc parser
 #TODO:-[ ]- create Variable-Sized_Graphic_Template.rpc parser
 #TODO:-[ ]- create Variable-Sized_Control_Button_Template.rpc parser
 
@@ -87,16 +87,16 @@ else: #rendered py file does not exist
     with open(pageFile, 'w') as pageFilePy_file:
         pageFilePy_file.write('test')
 
-##############
-# CSV Parser #
-##############
+#########
+# Parse #
+#########
 
 # Make sure to reorder the VOs 
 
 
-################## 
-# Render Imports #
-##################
+########## 
+# Render #
+##########
 
 from pydraw import *
 
