@@ -2,10 +2,11 @@
 
 from VSIndicatorParser import *
 from VSReadoutParser import *
+from VSControlButtonParser import *
 from ParserUtility import *
 
 class Parser:
-    def vSIndicator(preprocessedVS_IndicatorFilename):
+    def variable_sized_indicator(preprocessedVS_IndicatorFilename):
         # Read in lines of VS_Indicator rpc
         preprocessedVS_IndicatorFile = open(preprocessedVS_IndicatorFilename, 'r')
         preprocessedVS_IndicatorFileLines_Raw = preprocessedVS_IndicatorFile.readlines()
@@ -27,7 +28,7 @@ class Parser:
 
         return parsedVSIndicatorVisualOrders
     
-    def vSReadout(preprocessedVS_IndicatorFilename):
+    def variable_sized_readout(preprocessedVS_IndicatorFilename):
         # Read in lines of VS_Indicator rpc
         preprocessedVS_IndicatorFile = open(preprocessedVS_IndicatorFilename, 'r')
         preprocessedVS_IndicatorFileLines_Raw = preprocessedVS_IndicatorFile.readlines()
@@ -46,5 +47,27 @@ class Parser:
 
         # parse seperated Visual Orders
         parsedVSIndicatorVisualOrders = VSReadout.parseVisualOrders(visualOrderElementsList)
+
+        return parsedVSIndicatorVisualOrders
+    
+    def variable_sized_control_button(preprocessedVS_IndicatorFilename):
+        # Read in lines of VS_Indicator rpc
+        preprocessedVS_IndicatorFile = open(preprocessedVS_IndicatorFilename, 'r')
+        preprocessedVS_IndicatorFileLines_Raw = preprocessedVS_IndicatorFile.readlines()
+
+        # Check to make sure rpc passed in is a Variable-Sized Indicator Template(s)
+        if preprocessedVS_IndicatorFileLines_Raw[0].find('Variable-Sized Control Button Template(s)') == -1:
+            raise Exception('Input rpc first line doesn not contain "Variable-Sized Control Button Template(s)"') 
+        
+        # remove first line (title of the rpc is not needed)
+        preprocessedVS_IndicatorFileLines_Raw = preprocessedVS_IndicatorFileLines_Raw[1:]
+        # remove page breaks
+        preprocessedVS_IndicatorFileLines = ParserUtility.removePageBreaks(preprocessedVS_IndicatorFileLines_Raw)
+
+        # seperate Visual Orders
+        visualOrderElementsList = ParserUtility.seperateVisualOrders(preprocessedVS_IndicatorFileLines)
+
+        # parse seperated Visual Orders
+        parsedVSIndicatorVisualOrders = VSControlButton.parseVisualOrders(visualOrderElementsList)
 
         return parsedVSIndicatorVisualOrders

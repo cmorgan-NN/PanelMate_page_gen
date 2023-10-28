@@ -47,7 +47,10 @@ class VSIndicator:
             visualOrder = {}
             elements_working = elements[:]
             for line in unparsedVisualOrder: #Parse each Visual Order values
-                
+
+                if line[len(line) - 1] != '\n':
+                     line = line + '\n'
+
                 # Create sub dictionary Indicator States
 
                 #the remaining values are all on one line without keys seperating them

@@ -29,7 +29,7 @@
 #TODO:-[X]- create Variable-Sized_Indicator_Template.rpc parser
 #TODO:-[X]- create Variable-Sized_Readout_Template.rpc parser
 #TODO:-[ ]- create Variable-Sized_Graphic_Template.rpc parser
-#TODO:-[ ]- create Variable-Sized_Control_Button_Template.rpc parser
+#TODO:-[X]- create Variable-Sized_Control_Button_Template.rpc parser
 
 #########
 # Begin #

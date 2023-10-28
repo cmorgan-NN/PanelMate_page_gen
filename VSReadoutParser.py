@@ -42,7 +42,10 @@ class VSReadout:
             control_definitions_working = control_definitions[:]
 
             for line in unparsedVisualOrder: #Parse each Visual Order values
-                
+               
+                if line[len(line) - 1] != '\n':
+                     line = line + '\n'
+
                 #This voodoo should parse out anything in the elements list
                 if elements_working:
                     for member in enumerate(elements_working[:]):  #enumerate copied ([:]) elements to loop through them in order they're stored
