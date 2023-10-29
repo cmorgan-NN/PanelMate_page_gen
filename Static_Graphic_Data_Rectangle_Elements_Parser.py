@@ -1,19 +1,16 @@
-# Static Graphic Data Line Element parser
-
-# NOTE Background Info
-# example:
+#TODO: Create Static Graphic Data Rectangle Elements parser
 
 from Sub_Parsers import *
 from Parser_Utility import *
 
-class Static_Graphic_Data_Line:
+class Static_Graphic_Data_Rectangle:
 
     # Function to parse a list of Visual Orders and their elements into a dictionary
     def parse_visual_orders(visualOrderElementsList_raw):
 
         #Visual Order String Variables
         elements = ['Visual Order','X Origin','Y Origin',
-                    'End X', 'End Y', 'Pen Width', 'Pen Color']
+                    'Size X', 'Size Y', 'Pen Width', 'Pen Color','Fill Color']
         
         visualOrderElementsList = Parser_Utility.remove_table_headings(elements, visualOrderElementsList_raw)        
         

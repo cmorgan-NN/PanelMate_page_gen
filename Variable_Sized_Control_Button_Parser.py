@@ -1,19 +1,11 @@
 # Parser for Variable-Sized_Control_Button_Template data 
 
-# NOTE Background Info
-# example:
-# Visual Order: 1 X Origin: 443 Y Origin: 426 X Size: 85 Y Size: 38
-# Refresh Affected Graphics Online? No
-# Enable Conditional Visibility? No Visibility Expression:
-# Lens Color: 18
-# Control Type: Page Change Expression: 01
-
 from Sub_Parsers import *
 
-class VS_Control_Button:
+class Variable_Sized_Control_Button:
 
     # Function to parse a list of Visual Orders and their elements into a dictionary
-    def parseVisualOrders(visualOrderElementsList):
+    def parse_visual_orders(visualOrderElementsList):
 
         #Visual Order String Variables
         elements = ['Visual Order:','X Origin:','Y Origin:',

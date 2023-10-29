@@ -3,7 +3,7 @@
 class Parser_Utility:
     # Function to remove page breaks from PanelMate 
     #   preprocessed Variable-Sized_Indicator_Template report elements 
-    def removePageBreaks(preprocessedVS_IndicatorFileLines_Raw):
+    def remove_page_breaks(preprocessedVS_IndicatorFileLines_Raw):
         #find page breaks
         lineNumber = 0
         pageBreakLines = []
@@ -27,7 +27,7 @@ class Parser_Utility:
 
 
     # Function to seperate visual orders and return list
-    def seperateVisualOrders(preprocessedVS_IndicatorFileLines):
+    def seperate_visual_orders(preprocessedVS_IndicatorFileLines):
         VOs = []
         VO = []
         line_number = 0

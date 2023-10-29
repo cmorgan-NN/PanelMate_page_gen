@@ -24,7 +24,7 @@
 # Top_Level_Directory/Variable-Sized_Control_Button_Template.rpc
 
 #TODO:-[X]- create Static_Grapic_Data_Line_Elements.rpc parser
-#TODO:-[ ]- create Static_Grapic_Data_Rectangle_Elements.rpc parser
+#TODO:-[X]- create Static_Grapic_Data_Rectangle_Elements.rpc parser
 #TODO:-[ ]- create Static_Grapic_Data_Text_Elements.rpc parser
 #TODO:-[X]- create Variable-Sized_Indicator_Template.rpc parser
 #TODO:-[X]- create Variable-Sized_Readout_Template.rpc parser

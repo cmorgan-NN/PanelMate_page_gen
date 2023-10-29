@@ -1,24 +1,11 @@
 # Parser for Variable-Sized_Readout_Template data 
 
-# NOTE Background Info
-# example:
-# Visual Order: 31 X Origin: 29 Y Origin: 243 X Size: 24 Y Size: 16 Font: Normal Deadband Range: 0% Alarm Ack: Yes
-# Refresh Affected Graphics Online? No
-# Enable Conditional Visibility? No Visibility Expression:
-# Foreground Color: 6 Background Color: 0 Text Direction: Horizontal
-# Decimal Places: 0
-# Control Arrow Position: Left Control Arrow Display Flag: Always
-# Alarm Device Name:
-# Value Expression: [%R0012]
-# High Alarm Expression:
-# Low Alarm Expression:
-
 from Sub_Parsers import *
 
-class VS_Readout:
+class Variable_Sized_Readout:
 
     # Function to parse a list of Visual Orders and their elements into a dictionary
-    def parseVisualOrders(visualOrderElementsList):
+    def parse_visual_orders(visualOrderElementsList):
 
         #Visual Order String Variables
         elements = ['Visual Order:','X Origin:','Y Origin:',

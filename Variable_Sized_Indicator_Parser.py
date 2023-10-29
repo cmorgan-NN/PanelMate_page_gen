@@ -1,32 +1,12 @@
 # Parser for Variable-Sized_Indicator_Template data 
 # *Warning, this class may contain too much VooDoo*
 
-# NOTE Background Info
-# every VO is 13 lines long after removing page breaks
-# example:
-# Visual Order: 5 X Origin: 0 Y Origin: 278 X Size: 56 Y Size: 16
-# Refresh Affected Graphics Online? No
-# Enable Conditional Visibility? No Visibility Expression:
-# Alarm Device Name:
-# Indicator States 
-# Alarm Message Pen
-# Color
-# Fill
-# Color
-# Alarm Alarm
-# Ack
-# Conditional Expression
-# Zone 5 Fan #1 PSI Sw. Out 3 0 Yes Yes [%M0945]
-#
-# Everything below Indicator States is a dict nested in Indicator States
-#   this dict is a representation of a table from the PanelMate report
-
 from Sub_Parsers import *
 
-class VS_Indicator:
+class Variable_Sized_Indicator:
 
     # Function to parse a list of Visual Orders and their elements into a dictionary
-    def parseVisualOrders(visualOrderElementsList):
+    def parse_visual_orders(visualOrderElementsList):
 
         #Visual Order String Variables
         elements = ['Visual Order:','X Origin:','Y Origin:',
