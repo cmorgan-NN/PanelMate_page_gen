@@ -6,7 +6,7 @@ from Sub_Parsers import *
 class Variable_Sized_Indicator:
 
     # Function to parse a list of Visual Orders and their elements into a dictionary
-    def parse_visual_orders(visualOrderElementsList):
+    def parse_visual_orders(visual_order_elements):
 
         #Visual Order String Variables
         elements = ['Visual Order:','X Origin:','Y Origin:',
@@ -15,18 +15,18 @@ class Variable_Sized_Indicator:
                     'Enable Conditional Visibility?',
                     'Visibility Expression:','Alarm Device Name:']
         # Visual Order Indicator States table String Variables
-        keyAlarmMessage = 'Alarm Message'
-        keyPenColor = 'Pen Color'
-        keyFillColor = 'Fill Color'
-        keyAlarm = 'Alarm'
-        keyAlarmAck = 'Alarm Ack'
-        keyConditionalExpression = 'Conditional Expression'
+        key_alarm_message = 'Alarm Message'
+        key_pen_color = 'Pen Color'
+        key_fill_color = 'Fill Color'
+        key_alarm = 'Alarm'
+        key_alarmAck = 'Alarm Ack'
+        key_conditional_expression = 'Conditional Expression'
 
-        visualOrders = {}
-        for unparsedVisualOrder in visualOrderElementsList:
-            visualOrder = {}
+        visual_orders = {}
+        for visual_order_element in visual_order_elements:
+            visual_order = {}
             elements_working = elements[:]
-            for line in unparsedVisualOrder: #Parse each Visual Order values
+            for line in visual_order_element: #Parse each Visual Order values
 
                 if line[len(line) - 1] != '\n':
                      line = line + '\n'
@@ -41,55 +41,55 @@ class Variable_Sized_Indicator:
                 # Conditional Expression value
                 if not elements_working:
                     if (line.find(' Yes Yes ') != -1):
-                        valAlarm = 'Yes'
-                        valAlarmAck = 'Yes'
-                        posAlarm = line.find(' Yes Yes ')
-                        posConditionalExpression = posAlarm + len((' Yes Yes '))
+                        val_alarm = 'Yes'
+                        val_alarmAck = 'Yes'
+                        pos_alarm = line.find(' Yes Yes ')
+                        pos_conditional_expression = pos_alarm + len((' Yes Yes '))
                     elif (line.find(' No Yes ') != -1):
-                        valAlarm = 'No'
-                        valAlarmAck = 'Yes'
-                        posAlarm = line.find(' No Yes ')
-                        posConditionalExpression = posAlarm + len((' No Yes '))
+                        val_alarm = 'No'
+                        val_alarmAck = 'Yes'
+                        pos_alarm = line.find(' No Yes ')
+                        pos_conditional_expression = pos_alarm + len((' No Yes '))
                     elif (line.find(' Yes No ') != -1):
-                        valAlarm = 'Yes'
-                        valAlarmAck = 'No'
-                        posAlarm = line.find(' Yes No ')
-                        posConditionalExpression = posAlarm + len((' Yes No '))
+                        val_alarm = 'Yes'
+                        val_alarmAck = 'No'
+                        pos_alarm = line.find(' Yes No ')
+                        pos_conditional_expression = pos_alarm + len((' Yes No '))
                     elif (line.find(' No No ') != -1):
-                        valAlarm = 'No'
-                        valAlarmAck = 'No'
-                        posAlarm = line.find(' No No ')
-                        posConditionalExpression = posAlarm + len((' No No '))
+                        val_alarm = 'No'
+                        val_alarmAck = 'No'
+                        pos_alarm = line.find(' No No ')
+                        pos_conditional_expression = pos_alarm + len((' No No '))
 
                     #derive expresion for Conditional Expression value
-                    if 'posConditionalExpression' in locals():
-                        valConditionalExpression = line[posConditionalExpression:].strip('\n')
-                        line = line[:posAlarm] #remove extracted values from current line
+                    if 'pos_conditional_expression' in locals():
+                        val_conditional_expression = line[pos_conditional_expression:].strip('\n')
+                        line = line[:pos_alarm] #remove extracted values from current line
 
                     #derive Fill Color Visual Order value and strip it off
                     if line[len(line) - 1].isnumeric():
-                        valFillColor = line[line.rfind(' ') + 1 :]
+                        val_fill_color = line[line.rfind(' ') + 1 :]
                         line = line[:line.rfind(' ')]
 
                     #derive Pen Color and Alarm Message values from remaining portion of line 
                     if line[len(line) - 1].isnumeric():
-                        valPenColor = line[line.rfind(' ') + 1:]
-                        valAlarmMessage = line[:line.rfind(' ')]
+                        val_pen_color = line[line.rfind(' ') + 1:]
+                        val_alarm_message = line[:line.rfind(' ')]
 
                     #add all derived Indicator States to visualOrder
-                    if ('valAlarmMessage' in locals() and 
-                        'valPenColor' in locals() and 
-                        'valFillColor' in locals() and 
-                        'valAlarm' in locals() and 
-                        'valAlarmAck' in locals() and 
-                        'valConditionalExpression' in locals()):
-                        visualOrder.update({'Indicator States' :
-                                            {keyAlarmMessage : valAlarmMessage,
-                                            keyPenColor : valPenColor,
-                                            keyFillColor : valFillColor,
-                                            keyAlarm : valAlarm,
-                                            keyAlarmAck : valAlarmAck,
-                                            keyConditionalExpression : valConditionalExpression}})
+                    if ('val_alarm_message' in locals() and 
+                        'val_pen_color' in locals() and 
+                        'val_fill_color' in locals() and 
+                        'val_alarm' in locals() and 
+                        'val_alarmAck' in locals() and 
+                        'val_conditional_expression' in locals()):
+                        visual_order.update({'Indicator States' :
+                                            {key_alarm_message : val_alarm_message,
+                                            key_pen_color : val_pen_color,
+                                            key_fill_color : val_fill_color,
+                                            key_alarm : val_alarm,
+                                            key_alarmAck : val_alarmAck,
+                                            key_conditional_expression : val_conditional_expression}})
 
                 #This voodoo should parse out anything in the elements list
                 if elements_working:
@@ -100,13 +100,13 @@ class Variable_Sized_Indicator:
                             else: 
                                 #no next member
                                 parsed_element = Sub_Parsers.element_parser(member[1], line[:len(line)], line)
-                            visualOrder.update(parsed_element.get('element')) 
+                            visual_order.update(parsed_element.get('element')) 
                             line = parsed_element.get('remaining_line')
                             elements_working.remove(member[1])
                             if not line.strip():
                                 break
 
             #Create dictionary of all VS_Indicator Visual Order elements         
-            visualOrders.update({visualOrder['Visual Order'] : visualOrder}) #wow, thats a confusing line!
+            visual_orders.update({visual_order['Visual Order'] : visual_order}) #wow, thats a confusing line!
 
-        return visualOrders
+        return visual_orders

@@ -5,7 +5,7 @@ from Sub_Parsers import *
 class Variable_Sized_Control_Button:
 
     # Function to parse a list of Visual Orders and their elements into a dictionary
-    def parse_visual_orders(visualOrderElementsList):
+    def parse_visual_orders(rpc_data_elements):
 
         #Visual Order String Variables
         elements = ['Visual Order:','X Origin:','Y Origin:',
@@ -14,19 +14,19 @@ class Variable_Sized_Control_Button:
                     'Enable Conditional Visibility?','Visibility Expression:',
                     'Lens Color:','Control Type:']
         
-        visualOrders = {}
-        for unparsedVisualOrder in visualOrderElementsList:
-            visualOrder = {}
+        visual_orders = {}
+        for rpc_data_element in rpc_data_elements:
+            visual_order = {}
             if 'elements_working' in locals():
                 elements_working.clear()
             elements_working = elements[:]
 
-            if any('Page Change' in item for item in unparsedVisualOrder):
+            if any('Page Change' in item for item in rpc_data_element):
                     elements_working.append('Expression:')
-            if any('Normaly Open, Momentary' in item for item in unparsedVisualOrder):
+            if any('Normaly Open, Momentary' in item for item in rpc_data_element):
                     elements_working.append('Reference:')
 
-            for line in unparsedVisualOrder: #Parse each Visual Order values
+            for line in rpc_data_element: #Parse each Visual Order values
 
                 if line[len(line) - 1] != '\n':
                      line = line + '\n'
@@ -40,13 +40,13 @@ class Variable_Sized_Control_Button:
                             else: 
                                 #no next member
                                 parsed_element = Sub_Parsers.element_parser(member[1], line[:len(line)], line)
-                            visualOrder.update(parsed_element.get('element')) 
+                            visual_order.update(parsed_element.get('element')) 
                             line = parsed_element.get('remaining_line')
                             elements_working.remove(member[1])
                             if not line.strip():
                                 break
                    
             #Create dictionary of all VS_Indicator Visual Order elements         
-            visualOrders.update({visualOrder['Visual Order'] : visualOrder}) #wow, thats a confusing line!
+            visual_orders.update({visual_order['Visual Order'] : visual_order}) #wow, thats a confusing line!
 
-        return visualOrders
+        return visual_orders

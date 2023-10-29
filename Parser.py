@@ -1,4 +1,4 @@
-#Class to hold all the different parsers
+# Class to hold all the different parsers
 
 from Variable_Sized_Indicator_Parser import *
 from Variable_Sized_Readout_Parser import *
@@ -8,7 +8,7 @@ from Static_Graphic_Data_Rectangle_Elements_Parser import *
 
 from Parser_Utility import *
 
-#rpc file preprocessor
+# rpc file preprocessor
 def rpc_preprocessor(rpc_path_filename, rpc_type): 
    
  
@@ -38,7 +38,7 @@ def rpc_preprocessor(rpc_path_filename, rpc_type):
 class Parser:
     def variable_sized_indicator(rpc_path):
 
-        #prep rpc for parsing 
+        # prep rpc for parsing 
         rpc_pre = rpc_preprocessor(rpc_path, 'Variable-Sized Indicator Template(s)')        
         
         # parse seperated rpc
@@ -49,7 +49,7 @@ class Parser:
 
     def variable_sized_readout(rpc_path):
 
-        #prep rpc for parsing 
+        # prep rpc for parsing 
         rpc_pre = rpc_preprocessor(rpc_path, 'Variable-Sized Readout Template(s)')        
 
         # parse seperated rpc
@@ -60,7 +60,7 @@ class Parser:
 
     def variable_sized_control_button(rpc_path):
 
-        #prep rpc for parsing 
+        # prep rpc for parsing 
         rpc_pre = rpc_preprocessor(rpc_path, 'Variable-Sized Control Button Template(s)')        
 
         # parse seperated rpc
@@ -71,7 +71,7 @@ class Parser:
 
     def static_graphic_data_line(rpc_path):
         
-        #prep rpc for parsing 
+        # prep rpc for parsing 
         rpc_pre = rpc_preprocessor(rpc_path, 'Line Element(s)')        
 
         # parse seperated rpc
@@ -82,7 +82,7 @@ class Parser:
 
     def static_graphic_data_rectangle(rpc_path):
         
-        #prep rpc for parsing 
+        # prep rpc for parsing 
         rpc_pre = rpc_preprocessor(rpc_path, 'Rectangle Element(s)')        
 
         # parse seperated rpc

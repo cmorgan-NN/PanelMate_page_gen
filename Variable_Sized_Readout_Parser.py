@@ -5,7 +5,7 @@ from Sub_Parsers import *
 class Variable_Sized_Readout:
 
     # Function to parse a list of Visual Orders and their elements into a dictionary
-    def parse_visual_orders(visualOrderElementsList):
+    def parse_visual_orders(visual_order_elements):
 
         #Visual Order String Variables
         elements = ['Visual Order:','X Origin:','Y Origin:',
@@ -22,14 +22,15 @@ class Variable_Sized_Readout:
                                'Password Protection:']
 
 
-        visualOrders = {}
-        for unparsedVisualOrder in visualOrderElementsList:
-            visualOrder = {}
+        visual_orders = {}
+        for visual_order_element in visual_order_elements:
+            visual_order = {}
             elements_working = elements[:]
             control_definitions_working = control_definitions[:]
 
-            for line in unparsedVisualOrder: #Parse each Visual Order values
-               
+            for line in visual_order_element: #Parse each Visual Order values
+                
+                #if last line has no newline
                 if line[len(line) - 1] != '\n':
                      line = line + '\n'
 
@@ -42,14 +43,14 @@ class Variable_Sized_Readout:
                             else: 
                                 #no next member
                                 parsed_element = Sub_Parsers.element_parser(member[1], line[:len(line)], line)
-                            visualOrder.update(parsed_element.get('element')) 
+                            visual_order.update(parsed_element.get('element')) 
                             line = parsed_element.get('remaining_line')
                             elements_working.remove(member[1])
                             if not line.strip():
                                 break
 
                 #And this other voodoo should parse out a Control Definitions sub-dictionary
-                if any('Control Definitions' in item for item in unparsedVisualOrder):   
+                if any('Control Definitions' in item for item in visual_order_element):   
                     if 'control_definitions_D' not in locals():
                         control_definitions_D = {}                    
                     if control_definitions_working:
@@ -66,9 +67,9 @@ class Variable_Sized_Readout:
                                 if not line.strip():
                                     break
                     if not control_definitions_working:            
-                        visualOrder.update({'Control Definitions' : control_definitions_D.copy()})
+                        visual_order.update({'Control Definitions' : control_definitions_D.copy()})
                    
             #Create dictionary of all VS_Indicator Visual Order elements         
-            visualOrders.update({visualOrder['Visual Order'] : visualOrder}) #wow, thats a confusing line!
+            visual_orders.update({visual_order['Visual Order'] : visual_order}) #wow, thats a confusing line!
 
-        return visualOrders
+        return visual_orders

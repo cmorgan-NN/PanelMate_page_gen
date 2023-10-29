@@ -3,53 +3,53 @@
 class Parser_Utility:
     # Function to remove page breaks from PanelMate 
     #   preprocessed Variable-Sized_Indicator_Template report elements 
-    def remove_page_breaks(preprocessedVS_IndicatorFileLines_Raw):
+    def remove_page_breaks(rpc_data):
         #find page breaks
-        lineNumber = 0
-        pageBreakLines = []
-        for line in preprocessedVS_IndicatorFileLines_Raw:
-            lineNumber += 1
+        line_number = 0
+        page_break_lines = []
+        for line in rpc_data:
+            line_number += 1
             if 'Page' and 'Configuration' in line: #the page line contains Page and Configuration
-                pageBreakLines.append(lineNumber - 1) #the line before a page line is unwanted
-                pageBreakLines.append(lineNumber)
-                pageBreakLines.append(lineNumber + 1) #and the line after a page line is unwanted
+                page_break_lines.append(line_number - 1) #the line before a page line is unwanted
+                page_break_lines.append(line_number)
+                page_break_lines.append(line_number + 1) #and the line after a page line is unwanted
 
         #create a new list of data without page breaks
-        lineNumber = 0
-        preprocessedVS_IndicatorFileLines = []
-        for line in preprocessedVS_IndicatorFileLines_Raw:
-            lineNumber += 1
-            if lineNumber not in pageBreakLines:
-                preprocessedVS_IndicatorFileLines.append(line)
+        line_number = 0
+        rpc_data_file_lines = []
+        for line in rpc_data:
+            line_number += 1
+            if line_number not in page_break_lines:
+                rpc_data_file_lines.append(line)
 
         #passback data
-        return preprocessedVS_IndicatorFileLines
+        return rpc_data_file_lines
 
 
     # Function to seperate visual orders and return list
-    def seperate_visual_orders(preprocessedVS_IndicatorFileLines):
-        VOs = []
-        VO = []
+    def seperate_visual_orders(rpc_data_file_lines):
+        visual_orders = []
+        visual_order = []
         line_number = 0
 
         #determines if new list item should be made and appends line
-        for line in preprocessedVS_IndicatorFileLines:
+        for line in rpc_data_file_lines:
             
             line_number += 1
             
             #seperate VOs
             if line.find('Visual Order: ') != -1:
-                if VO: #if list is populated (needed for first VO)
-                    VOs.append(VO.copy())
-                VO.clear()
+                if visual_order: #if list is populated (needed for first VO)
+                    visual_orders.append(visual_order.copy())
+                visual_order.clear()
                 
-            VO.append(line)
+            visual_order.append(line)
 
             #if line is last line
-            if line_number == len(preprocessedVS_IndicatorFileLines):
-                VOs.append(VO.copy())
+            if line_number == len(rpc_data_file_lines):
+                visual_orders.append(visual_order.copy())
                 
-        return VOs
+        return visual_orders
     
     def remove_table_headings(headings, table_data):
         
