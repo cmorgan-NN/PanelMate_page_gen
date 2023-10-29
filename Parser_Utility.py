@@ -1,6 +1,6 @@
 #Utility functions common to all parsers
 
-class ParserUtility:
+class Parser_Utility:
     # Function to remove page breaks from PanelMate 
     #   preprocessed Variable-Sized_Indicator_Template report elements 
     def removePageBreaks(preprocessedVS_IndicatorFileLines_Raw):
@@ -31,16 +31,18 @@ class ParserUtility:
         VOs = []
         VO = []
         line_number = 0
-        
+
         #determines if new list item should be made and appends line
         for line in preprocessedVS_IndicatorFileLines:
             
             line_number += 1
-
-            if line.find('Visual Order: ') != -1:     
+            
+            #seperate VOs
+            if line.find('Visual Order: ') != -1:
                 if VO: #if list is populated (needed for first VO)
                     VOs.append(VO.copy())
                 VO.clear()
+                
             VO.append(line)
 
             #if line is last line
@@ -48,3 +50,19 @@ class ParserUtility:
                 VOs.append(VO.copy())
                 
         return VOs
+    
+    def remove_table_headings(headings, table_data):
+        
+        split_headings = []
+
+        for heading in headings: 
+            split_headings.extend(heading.split(' '))
+        
+        for heading in split_headings:
+            line_number = 0
+            for line in table_data:
+                if line.find(heading) > -1:
+                    del(table_data[line_number])
+                line_number += 1
+        
+        return table_data

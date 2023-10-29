@@ -10,7 +10,7 @@
 
 from Sub_Parsers import *
 
-class VSControlButton:
+class VS_Control_Button:
 
     # Function to parse a list of Visual Orders and their elements into a dictionary
     def parseVisualOrders(visualOrderElementsList):

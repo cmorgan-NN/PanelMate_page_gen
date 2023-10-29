@@ -1,10 +1,13 @@
 #Class to hold all the different parsers
 
-from VSIndicatorParser import *
-from VSReadoutParser import *
-from VSControlButtonParser import *
-from ParserUtility import *
+from VS_Indicator_Parser import *
+from VS_Readout_Parser import *
+from VS_Control_Button_Parser import *
+from Static_Graphic_Data_Line_Elements_Parser import *
 
+from Parser_Utility import *
+
+#FIXME: everything using "preprocessedVS_IndicatorFilename" 
 class Parser:
     def variable_sized_indicator(preprocessedVS_IndicatorFilename):
         # Read in lines of VS_Indicator rpc
@@ -18,13 +21,13 @@ class Parser:
         # remove first line (title of the rpc is not needed)
         preprocessedVS_IndicatorFileLines_Raw = preprocessedVS_IndicatorFileLines_Raw[1:]
         # remove page breaks
-        preprocessedVS_IndicatorFileLines = ParserUtility.removePageBreaks(preprocessedVS_IndicatorFileLines_Raw)
+        preprocessedVS_IndicatorFileLines = Parser_Utility.removePageBreaks(preprocessedVS_IndicatorFileLines_Raw)
 
         # seperate Visual Orders
-        visualOrderElementsList = ParserUtility.seperateVisualOrders(preprocessedVS_IndicatorFileLines)
+        visualOrderElementsList = Parser_Utility.seperateVisualOrders(preprocessedVS_IndicatorFileLines)
 
         # parse seperated Visual Orders
-        parsedVSIndicatorVisualOrders = VSIndicator.parseVisualOrders(visualOrderElementsList)
+        parsedVSIndicatorVisualOrders = VS_Indicator.parseVisualOrders(visualOrderElementsList)
 
         return parsedVSIndicatorVisualOrders
     
@@ -40,16 +43,17 @@ class Parser:
         # remove first line (title of the rpc is not needed)
         preprocessedVS_IndicatorFileLines_Raw = preprocessedVS_IndicatorFileLines_Raw[1:]
         # remove page breaks
-        preprocessedVS_IndicatorFileLines = ParserUtility.removePageBreaks(preprocessedVS_IndicatorFileLines_Raw)
+        preprocessedVS_IndicatorFileLines = Parser_Utility.removePageBreaks(preprocessedVS_IndicatorFileLines_Raw)
 
         # seperate Visual Orders
-        visualOrderElementsList = ParserUtility.seperateVisualOrders(preprocessedVS_IndicatorFileLines)
+        visualOrderElementsList = Parser_Utility.seperateVisualOrders(preprocessedVS_IndicatorFileLines)
 
         # parse seperated Visual Orders
-        parsedVSIndicatorVisualOrders = VSReadout.parseVisualOrders(visualOrderElementsList)
+        parsedVSIndicatorVisualOrders = VS_Readout.parseVisualOrders(visualOrderElementsList)
 
         return parsedVSIndicatorVisualOrders
     
+
     def variable_sized_control_button(preprocessedVS_IndicatorFilename):
         # Read in lines of VS_Indicator rpc
         preprocessedVS_IndicatorFile = open(preprocessedVS_IndicatorFilename, 'r')
@@ -62,12 +66,33 @@ class Parser:
         # remove first line (title of the rpc is not needed)
         preprocessedVS_IndicatorFileLines_Raw = preprocessedVS_IndicatorFileLines_Raw[1:]
         # remove page breaks
-        preprocessedVS_IndicatorFileLines = ParserUtility.removePageBreaks(preprocessedVS_IndicatorFileLines_Raw)
+        preprocessedVS_IndicatorFileLines = Parser_Utility.removePageBreaks(preprocessedVS_IndicatorFileLines_Raw)
 
         # seperate Visual Orders
-        visualOrderElementsList = ParserUtility.seperateVisualOrders(preprocessedVS_IndicatorFileLines)
+        visualOrderElementsList = Parser_Utility.seperateVisualOrders(preprocessedVS_IndicatorFileLines)
 
         # parse seperated Visual Orders
-        parsedVSIndicatorVisualOrders = VSControlButton.parseVisualOrders(visualOrderElementsList)
+        parsedVSIndicatorVisualOrders = VS_Control_Button.parseVisualOrders(visualOrderElementsList)
 
         return parsedVSIndicatorVisualOrders
+
+
+    def static_graphic_line_data(preprocessedVS_IndicatorFilename):
+        # Read in lines of VS_Indicator rpc
+        preprocessedVS_IndicatorFile = open(preprocessedVS_IndicatorFilename, 'r')
+        preprocessedVS_IndicatorFileLines_Raw = preprocessedVS_IndicatorFile.readlines()
+
+        # Check to make sure rpc passed in is a Variable-Sized Indicator Template(s)
+        if preprocessedVS_IndicatorFileLines_Raw[0].find('Line Element(s)') == -1:
+            raise Exception('Input rpc first line doesn not contain "Line Element(s)"') 
+        
+        # remove first line (title of the rpc is not needed)
+        preprocessedVS_IndicatorFileLines_Raw = preprocessedVS_IndicatorFileLines_Raw[1:]
+
+        # remove page breaks
+        visual_order_elements_list = Parser_Utility.removePageBreaks(preprocessedVS_IndicatorFileLines_Raw)
+
+        # parse seperated Visual Orders
+        parsedVSIndicatorVisualOrders = Static_Graphic_Data_Line.parseVisualOrders(visual_order_elements_list)
+
+        return parsedVSIndicatorVisualOrders   

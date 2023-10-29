@@ -1,0 +1,1 @@
+#TODO: Create Static Graphic Data Rectangle Elements parser

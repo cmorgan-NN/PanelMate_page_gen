@@ -1,0 +1,1 @@
+#TODO: Create Static Graphic Data Text Elements parser

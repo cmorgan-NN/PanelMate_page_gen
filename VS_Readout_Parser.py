@@ -15,7 +15,7 @@
 
 from Sub_Parsers import *
 
-class VSReadout:
+class VS_Readout:
 
     # Function to parse a list of Visual Orders and their elements into a dictionary
     def parseVisualOrders(visualOrderElementsList):

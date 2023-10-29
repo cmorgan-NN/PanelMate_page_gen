@@ -23,7 +23,7 @@
 
 from Sub_Parsers import *
 
-class VSIndicator:
+class VS_Indicator:
 
     # Function to parse a list of Visual Orders and their elements into a dictionary
     def parseVisualOrders(visualOrderElementsList):
