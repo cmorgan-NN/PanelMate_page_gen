@@ -10,4 +10,7 @@ parsed_control_button = Parser.variable_sized_control_button('Drives 4\Variable-
 parsed_static_graphic_data_line = Parser.static_graphic_data_line('Drives 4\Static_Graphic_Data_Line_Elements.rpc')
 
 parsed_static_graphic_data_rectangle = Parser.static_graphic_data_rectangle('Drives 4\Static_Graphic_Data_Rectangle_Elements.rpc')
+
+parsed_static_graphic_data_text = Parser.static_graphic_data_text('Drives 4\Static_Graphic_Data_Text_Elements.rpc')
+
 print(parsedVisualOrders)

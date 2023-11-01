@@ -57,12 +57,12 @@ class Parser_Utility:
 
         for heading in headings: 
             split_headings.extend(heading.split(' '))
-        
-        for heading in split_headings:
-            line_number = 0
-            for line in table_data:
-                if line.find(heading) > -1:
-                    del(table_data[line_number])
-                line_number += 1
+
+        for line in table_data[:]:
+            for heading in split_headings:
+                if (line.find(heading) > -1 and
+                    line.lstrip()[0] == heading[0]):
+                    table_data.remove(line)
+                    break
         
         return table_data

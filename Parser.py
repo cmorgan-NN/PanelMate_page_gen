@@ -5,6 +5,7 @@ from Variable_Sized_Readout_Parser import *
 from Variable_Sized_Control_Button_Parser import *
 from Static_Graphic_Data_Line_Elements_Parser import *
 from Static_Graphic_Data_Rectangle_Elements_Parser import *
+from Static_Graphic_Data_Text_Elements_Parser import *
 
 from Parser_Utility import *
 
@@ -19,7 +20,7 @@ def rpc_preprocessor(rpc_path_filename, rpc_type):
     # Check to make sure rpc passed in is a valid type
     #  a propper rpc's type is the first line of the file
     if rpc_data_raw[0].find(rpc_type) == -1:
-        raise Exception('Input rpc first line doesn not contain "' + rpc_type +'"') 
+        raise Exception('Input rpc first line doesn\'t not contain "' + rpc_type + '"') 
  
     # remove first line (the rpc type is no longer needed)
     rpc_data_type_rem = rpc_data_raw[1:]
@@ -89,3 +90,14 @@ class Parser:
         rpc_parsed = Static_Graphic_Data_Rectangle.parse_visual_orders(rpc_pre)
 
         return rpc_parsed  
+    
+
+    def static_graphic_data_text(rpc_path):
+        
+        # prep rpc for parsing 
+        rpc_pre = rpc_preprocessor(rpc_path, 'Text Element(s)')        
+
+        # parse seperated rpc
+        rpc_parsed = Static_Graphic_Data_Text.parse_visual_orders(rpc_pre)
+
+        return rpc_parsed
