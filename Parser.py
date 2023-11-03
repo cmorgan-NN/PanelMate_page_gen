@@ -3,6 +3,7 @@
 from Variable_Sized_Indicator_Parser import *
 from Variable_Sized_Readout_Parser import *
 from Variable_Sized_Control_Button_Parser import *
+from Variable_Sized_Graphic_Parser import *
 from Static_Graphic_Data_Line_Elements_Parser import *
 from Static_Graphic_Data_Rectangle_Elements_Parser import *
 from Static_Graphic_Data_Text_Elements_Parser import *
@@ -66,6 +67,17 @@ class Parser:
 
         # parse seperated rpc
         rpc_parsed = Variable_Sized_Control_Button.parse_visual_orders(rpc_pre)       
+
+        return rpc_parsed
+
+
+    def variable_sized_graphic(rpc_path):
+        
+        # prep rpc for parsing 
+        rpc_pre = rpc_preprocessor(rpc_path, 'Variable-Sized Graphic Template(s)')        
+
+        # parse seperated rpc
+        rpc_parsed = Variable_Sized_Graphic.parse_visual_orders(rpc_pre)
 
         return rpc_parsed
 

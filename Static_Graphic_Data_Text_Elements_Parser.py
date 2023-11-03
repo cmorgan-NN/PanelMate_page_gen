@@ -18,7 +18,7 @@ class Static_Graphic_Data_Text:
                     'Font', 
                     'Foreground Color',
                     'Background Color',
-                    'Text'] # purposly ommitted text becuase its a gifted child (shhh... it's special!)
+                    'Text'] 
         
         visualOrderElementsList = Parser_Utility.remove_table_headings(elements, visualOrderElementsList_raw)        
 
@@ -30,7 +30,7 @@ class Static_Graphic_Data_Text:
             if line[len(line) - 1] != '\n':
                  line = line + '\n'
 
-            enable_cond_visibility = 'No'
+            enable_cond_visibility = 'No' #FIXME: Ist this needed? Ein Bein Mein Komphf
             current_line_pos = 0 
             index_modifier = 0
             #This voodoo should parse out anything in an element table

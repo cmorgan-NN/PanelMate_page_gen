@@ -13,4 +13,5 @@ parsed_static_graphic_data_rectangle = Parser.static_graphic_data_rectangle('Dri
 
 parsed_static_graphic_data_text = Parser.static_graphic_data_text('Drives 4\Static_Graphic_Data_Text_Elements.rpc')
 
+parsed_grapic = Parser.variable_sized_graphic('Drives 4\Variable-Sized_Graphic_Template.rpc')
 print(parsedVisualOrders)

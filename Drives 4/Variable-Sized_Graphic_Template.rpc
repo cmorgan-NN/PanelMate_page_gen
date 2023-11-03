@@ -1,0 +1,65 @@
+Variable-Sized Graphic Template(s)
+Visual Order: 55 X Origin: 0 Y Origin: 0 X Size: 0 Y Size: 0
+Refresh Affected Graphics Online? Yes
+Enable Conditional Visibility? No Visibility Expression:
+Control Arrow Direction: Right Control Arrow Display Flag: On Selection
+Alarm Device Name:
+Control Definitions
+Control
+#
+Control Label Foreground
+Color
+Background
+Color
+PLC Bit Reference
+1 OVEN¬¬BELT¬¬DISABLE 0 4 [%M0933]
+2 OVEN¬¬BELT¬¬ENABLE 0 6 [%M0209]
+3 7 0
+4 7 0
+Graphic States
+State
+#
+Symbol Name Alarm Alarm
+Ack
+Foreground
+Color
+Background
+Color
+Conditional Expression
+1 No Yes 255 255
+2 No Yes 255 255
+3 No Yes 255 255
+4 ENA_DIS No Yes 255 255 [%M0134]
+5 DIS_ENA No Yes 255 255 ~[%M0134]
+Visual Order: 57 X Origin: 0 Y Origin: 0 X Size: 0 Y Size: 0
+Refresh Affected Graphics Online? Yes
+Enable Conditional Visibility? No Visibility Expression:
+Control Arrow Direction: Right Control Arrow Display Flag: Always
+Alarm Device Name:
+Control Definitions
+Control
+#
+Control Label Foreground
+Color
+Background
+Color
+PLC Bit Reference
+1 7 0
+2 7 0
+3 7 0
+4 7 0
+Graphic States
+State
+#
+Symbol Name Alarm Alarm
+Ack
+Foreground
+Color
+Background
+Color
+Conditional Expression
+1 No Yes 255 255
+2 No Yes 255 255
+3 No Yes 255 255
+4 DRIVE FAULT No No 255 255 [%M0136]
+5 RUNNING No Yes 255 255 [%M0135]
