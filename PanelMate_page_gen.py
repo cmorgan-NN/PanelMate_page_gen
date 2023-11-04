@@ -41,6 +41,7 @@
 
 import sys
 import os.path
+from Parser import *
 
 #############
 # Functions #
@@ -52,7 +53,7 @@ import os.path
 
 #handle cli stuff
 cliArgumentNumber = len(sys.argv)
-helpMessage = "Please enter the directory name where the PanelMate Page CSV files are located..."
+helpMessage = "Please enter the directory name where the PanelMate Page .rpc files are located..."
 
 if (cliArgumentNumber < 2):
     raise Exception(helpMessage)
@@ -91,6 +92,36 @@ else: #rendered py file does not exist
 # Parse #
 #########
 
+top_level_dictionary = {}
+rpc_files_to_parse = []
+
+for file in os.listdir(pageDir):
+    if file[len(file) - 4:].lower() == '.rpc':
+        rpc_files_to_parse.append(file)
+
+for file in rpc_files_to_parse:
+    rpc_file = pageDir + '\\' + file
+
+    if file == 'Static_Graphic_Data_Line_Elements.rpc':
+        parsed_static_graphic_data_line = Parser.static_graphic_data_line(rpc_file)
+
+    elif file == 'Static_Graphic_Data_Rectangle_Elements.rpc':
+        parsed_static_graphic_data_rectangle = Parser.static_graphic_data_rectangle(rpc_file)
+
+    elif file == 'Static_Graphic_Data_Text_Elements.rpc':
+        parsed_static_graphic_data_text = Parser.static_graphic_data_text(rpc_file)
+
+    elif file == 'Variable-Sized_Indicator_Template.rpc':
+        parsed_inicator = Parser.variable_sized_indicator(rpc_file)
+
+    elif file == 'Variable-Sized_Readout_Template.rpc':
+        parsed_readout = Parser.variable_sized_readout(rpc_file)
+
+    elif file == 'Variable-Sized_Control_Button_Template.rpc':
+        parsed_control_button = Parser.variable_sized_control_button(rpc_file)
+
+    elif file == 'Variable-Sized_Graphic_Template.rpc':
+        parsed_graphic = Parser.variable_sized_graphic(rpc_file)
 # Make sure to reorder the VOs 
 
 
@@ -159,9 +190,24 @@ plcReferences = { #GE Fanuc Reference Python Dictionary
     '%R0115' : '[R0115]'  #output divided by 10 on HMI
 }
 
-#############################
-# Render Page Visual Orders #
-#############################
+###############################################
+# Generate Render Data for Page Visual Orders #
+###############################################
+
+# Create a dictionary with the visual order number as the key and a list of python code as the value
+rendered_static_graphic_data_line = Render.static_grapic_data_line(parsed_static_graphic_data_line)
+
+rendered_static_graphic_data_rectangle = Render.static_graphic_data_rectangle(parsed_static_graphic_data_rectangle)
+
+rendered_static_graphic_data_text = Render.static_graphic_data_text(parsed_static_graphic_data_text)
+
+rendered_inicator = Render.variable_sized_indicator(parsed_inicator)
+
+rendered_readout = Render.variable_sized_readout(parsed_readout)
+
+rendered_control_button = Render.variable_sized_control_button()
+
+rendered_graphic = Render.variable_sized_graphic()
 
 # depending on what current VO is, then call appropriate renderer for that VO and render to python source
 
