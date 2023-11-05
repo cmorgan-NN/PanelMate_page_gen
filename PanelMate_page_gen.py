@@ -25,10 +25,10 @@
 
 #TODO:-[X]- create Static_Grapic_Data_Line_Elements.rpc parser
 #TODO:-[X]- create Static_Grapic_Data_Rectangle_Elements.rpc parser
-#TODO:-[ ]- create Static_Grapic_Data_Text_Elements.rpc parser
+#TODO:-[X]- create Static_Grapic_Data_Text_Elements.rpc parser
 #TODO:-[X]- create Variable-Sized_Indicator_Template.rpc parser
 #TODO:-[X]- create Variable-Sized_Readout_Template.rpc parser
-#TODO:-[ ]- create Variable-Sized_Graphic_Template.rpc parser
+#TODO:-[X]- create Variable-Sized_Graphic_Template.rpc parser
 #TODO:-[X]- create Variable-Sized_Control_Button_Template.rpc parser
 
 #########
@@ -41,11 +41,55 @@
 
 import sys
 import os.path
+import json
 from Parser import *
 
 #############
 # Functions #
 #############
+
+# Function with input of top_level_dictionary and
+# return lowest visual order tuple: 
+#  (lowest_vo dict entry, top_level_directory with lowest vo removed) 
+
+# find current lowest visual order
+def lowest_visual_order(top_level_dictionary):
+
+    highest_visual_order = 1
+    #find highest
+    for element_type in top_level_dictionary:
+        element_vos = []
+        element_vos_list = list(top_level_dictionary[element_type].keys())
+        for vo in element_vos_list:
+            element_vos.append(int(vo))
+        
+        if element_vos:
+            if highest_visual_order < max(element_vos):
+                highest_visual_order = max(element_vos)
+
+    lowest_visual_order = highest_visual_order
+    # peel off lowest and return
+    for element_type in top_level_dictionary:
+
+        element_vos = []
+
+        #find all vo numbers
+        element_vos_list = list(top_level_dictionary[element_type].keys())
+
+        #cast to list for comparisons
+        for vo in element_vos_list:
+            element_vos.append(int(vo))
+
+        #find lowest vo and create a tuple (visual_order, element_type)
+        if element_vos: #if list not empty
+            if min(element_vos) <= highest_visual_order:
+                if lowest_visual_order >= min(element_vos):
+                    lowest_visual_order = min(element_vos)
+                    lowest_vo_element_type_return = element_type
+    
+    lowest_visual_order_return = top_level_dictionary[lowest_vo_element_type_return].pop(str(lowest_visual_order))       
+    return_element = { lowest_vo_element_type_return : lowest_visual_order_return }     
+    return ((return_element, top_level_dictionary))
 
 ###################
 # File Operations #
@@ -70,7 +114,7 @@ if (not os.path.isdir(pageDir)):
     raise Exception("Directory not found. " + helpMessage)
 else:
     print(pageDir, "directory found! This will be the name of the HMI page render file.")
-    pageFile = (os.path.join(pageDir,pageDir + ".py"))
+    pageFile = (os.path.join(pageDir,pageDir + ".json"))
 
 # Check if rendered page exists, if so, ask for overwrite
 if (os.path.isfile(pageFile)):
@@ -83,11 +127,6 @@ if (os.path.isfile(pageFile)):
             print("Please choose a new page directory and try again")
             exit(0)
 
-else: #rendered py file does not exist
-    print 
-    with open(pageFile, 'w') as pageFilePy_file:
-        pageFilePy_file.write('test')
-
 #########
 # Parse #
 #########
@@ -95,6 +134,7 @@ else: #rendered py file does not exist
 top_level_dictionary = {}
 rpc_files_to_parse = []
 
+#make directory list
 for file in os.listdir(pageDir):
     if file[len(file) - 4:].lower() == '.rpc':
         rpc_files_to_parse.append(file)
@@ -103,32 +143,69 @@ for file in rpc_files_to_parse:
     rpc_file = pageDir + '\\' + file
 
     if file == 'Static_Graphic_Data_Line_Elements.rpc':
+        if 'lines' not in top_level_dictionary:
+            top_level_dictionary.update({ 'lines' : {} })
         parsed_static_graphic_data_line = Parser.static_graphic_data_line(rpc_file)
-
+        top_level_dictionary['lines'].update(parsed_static_graphic_data_line)
+        
     elif file == 'Static_Graphic_Data_Rectangle_Elements.rpc':
+        if 'rectangles' not in top_level_dictionary:
+            top_level_dictionary.update({ 'rectangles' : {} })
         parsed_static_graphic_data_rectangle = Parser.static_graphic_data_rectangle(rpc_file)
+        top_level_dictionary['rectangles'].update(parsed_static_graphic_data_rectangle)
 
     elif file == 'Static_Graphic_Data_Text_Elements.rpc':
+        if 'text' not in top_level_dictionary:
+            top_level_dictionary.update({ 'text' : {} })
         parsed_static_graphic_data_text = Parser.static_graphic_data_text(rpc_file)
+        top_level_dictionary['text'].update(parsed_static_graphic_data_text)
 
     elif file == 'Variable-Sized_Indicator_Template.rpc':
+        if 'indicator' not in top_level_dictionary:
+            top_level_dictionary.update({ 'indicator' : {} })
         parsed_inicator = Parser.variable_sized_indicator(rpc_file)
+        top_level_dictionary['indicator'].update(parsed_inicator)
 
     elif file == 'Variable-Sized_Readout_Template.rpc':
+        if 'readout' not in top_level_dictionary:
+            top_level_dictionary.update({ 'readout' : {} })
         parsed_readout = Parser.variable_sized_readout(rpc_file)
+        top_level_dictionary['readout'].update(parsed_readout)
 
     elif file == 'Variable-Sized_Control_Button_Template.rpc':
+        if 'control_button' not in top_level_dictionary:
+            top_level_dictionary.update({ 'control_button' : {} })
         parsed_control_button = Parser.variable_sized_control_button(rpc_file)
+        top_level_dictionary['control_button'].update(parsed_control_button)
 
     elif file == 'Variable-Sized_Graphic_Template.rpc':
+        if 'graphic' not in top_level_dictionary:
+            top_level_dictionary.update({ 'graphic' : {} })
         parsed_graphic = Parser.variable_sized_graphic(rpc_file)
-# Make sure to reorder the VOs 
+        top_level_dictionary['graphic'].update(parsed_graphic)
 
+############## 
+# Pre Render #
+##############
 
-########## 
-# Render #
-##########
+#cycling through all visual orders, in order and removing them from top_level_directory afterwards
+remove = ''
 
+with open (pageFile, 'w') as pageFilePy_file:
+#    while top_level_dictionary:
+#        #remove becomes non empty (true) when below "if not" detects that the element_type sub dictionary
+#        #
+#        if remove:
+#            top_level_dictionary.pop(remove)
+#            remove = ''
+#        for element_type in top_level_dictionary:
+#            if not top_level_dictionary[element_type]:  #the aforementioned "if not" that triggers removal of the empty sub element
+#                remove = element_type
+#                break 
+#            else:
+#                vo_to_render, top_level_dictionary = lowest_visual_order(top_level_dictionary)
+    json.dump(top_level_dictionary, pageFilePy_file)
+                
 from pydraw import *
 
 ###############################
@@ -193,6 +270,7 @@ plcReferences = { #GE Fanuc Reference Python Dictionary
 ###############################################
 # Generate Render Data for Page Visual Orders #
 ###############################################
+# make lists of vo's in elements
 
 # Create a dictionary with the visual order number as the key and a list of python code as the value
 rendered_static_graphic_data_line = Render.static_grapic_data_line(parsed_static_graphic_data_line)
