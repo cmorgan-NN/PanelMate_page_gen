@@ -204,7 +204,6 @@ with open (pageFile, 'w') as pageFilePy_file:
 #                break 
 #            else:
 #                vo_to_render, top_level_dictionary = lowest_visual_order(top_level_dictionary)
-    json.dump(top_level_dictionary, pageFilePy_file)
                 
 from pydraw import *
 
