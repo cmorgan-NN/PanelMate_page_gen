@@ -2,7 +2,7 @@
 # Author: C☩M
 # Company: National Nonwovens
 # Program Summary: PanelMate Pro HMI Page Generator
-# Date: October 19ᵗʰ - ?, Two Thousand Twenty Three Anno Domini
+# Date: October 19ᵗʰ - 24ᵗʰ, Two Thousand Twenty Three Anno Domini
 
 ########### 
 # Imports #
