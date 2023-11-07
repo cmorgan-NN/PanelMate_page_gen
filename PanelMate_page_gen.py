@@ -23,6 +23,22 @@
 # Top_Level_Directory/Variable-Sized_Graphic_Template.rpc
 # Top_Level_Directory/Variable-Sized_Control_Button_Template.rpc
 
+# Copilot's explaination of the program to me:
+# GitHub Copilot: Your program appears to be a graphical user interface (GUI) for a
+# system, possibly related to controlling drives. It uses the `pydraw` library 
+# to create a screen and display text elements on it. 
+# The text elements include "EXIT", "PAGE UP", and "DRIVE", 
+# suggesting some form of navigation or control panel. 
+# The function `panelMateColorTo24Bit` is used to convert 
+# PanelMate color codes to standard 24-bit/HTML color codes, 
+# which are then used to set the color of the text elements.
+
+# My explaination of the program to Copilot:
+# You were close. This program renders what a gui page from parts of an 
+# obsolete HMI panel's configuration report looks like in order to help 
+# an engineer or tech analyse which PLC references, or tags, are used to 
+# communicate between said HMI and any PLCs it is connected to.
+
 #########
 # Begin #
 #########
