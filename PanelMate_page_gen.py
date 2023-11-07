@@ -41,8 +41,8 @@
 
 import sys
 import os.path
-import json
 from Parser import *
+from Renderer import *
 
 #############
 # Functions #
@@ -114,7 +114,7 @@ if (not os.path.isdir(pageDir)):
     raise Exception("Directory not found. " + helpMessage)
 else:
     print(pageDir, "directory found! This will be the name of the HMI page render file.")
-    pageFile = (os.path.join(pageDir,pageDir + ".json"))
+    pageFile = (os.path.join(pageDir,pageDir + ".py"))
 
 # Check if rendered page exists, if so, ask for overwrite
 if (os.path.isfile(pageFile)):
@@ -188,115 +188,140 @@ for file in rpc_files_to_parse:
 # Pre Render #
 ##############
 
-#cycling through all visual orders, in order and removing them from top_level_directory afterwards
-remove = ''
+# create list for final screen file render
+screen_file = []
 
-with open (pageFile, 'w') as pageFilePy_file:
-#    while top_level_dictionary:
-#        #remove becomes non empty (true) when below "if not" detects that the element_type sub dictionary
-#        #
-#        if remove:
-#            top_level_dictionary.pop(remove)
-#            remove = ''
-#        for element_type in top_level_dictionary:
-#            if not top_level_dictionary[element_type]:  #the aforementioned "if not" that triggers removal of the empty sub element
-#                remove = element_type
-#                break 
-#            else:
-#                vo_to_render, top_level_dictionary = lowest_visual_order(top_level_dictionary)
-                
-from pydraw import *
+#######################
+# Render Dependancies #
+#######################
+
+screen_file.append('from pydraw import *')
+
 
 ###############################
 # Render Function Definitions #
 ###############################
 
-# create functions for rendering each different type of VO
+screen_file.extend([
+    "",
+    "# Function for changing panelmate report colors (aka 'pen colors') ",
+    "#   to standard 24-bit/HTML colors",
+    "# See PanelMate Power Pro Manual for colors by pallete. ",
+    "#   This section is not comprehensive!",
+    "def panelMateColorTo24Bit(panelMateColor):",
+    "    panelMatePalette = ['#000000', '#0000ff', '#00ff00', '#00ffff', ",
+    "                        '#ff0000', '#ff00ff', '#ffff00', '#ffffff',",
+    "                        '#000000', '#0000ff', '#00ff00', '#00ffff', ",
+    "                        '#ff0000', '#ff00ff', '#ffff00', '#ffffff',",
+    "                        '#000000', '#808080', '#c0c0c0', '#ffffff', ",
+    "                        '#000000', '#808080', '#c0c0c0', '#ffffff']",
+    "    if (panelMateColor == 255):",
+    "        return '#FFFFFF'",
+    "    elif (panelMateColor <= 24):",
+    "        return panelMatePalette[panelMateColor]",
+    "    else:",
+    "        return '#000000'",
+    ""])
 
-# Function for changing panelmate report colors (aka 'pen colors') 
-#   to standard 24-bit/HTML colors
-# See PanelMate Power Pro Manual for colors by pallete. 
-#   This section is not comprehensive!
-def panelMateColorTo24Bit(panelMateColor):
-    panelMatePalette = ['#000000', '#0000ff', '#00ff00', '#00ffff', 
-                        '#ff0000', '#ff00ff', '#ffff00', '#ffffff',
-                        '#000000', '#0000ff', '#00ff00', '#00ffff', 
-                        '#ff0000', '#ff00ff', '#ffff00', '#ffffff',
-                        '#000000', '#808080', '#c0c0c0', '#ffffff', 
-                        '#000000', '#808080', '#c0c0c0', '#ffffff']
-    if (panelMateColor == 255):
-        return '#FFFFFF'
-    elif (panelMateColor <= 24):
-        return panelMatePalette[panelMateColor]
-    else:
-        return '#000000'
 
+####################
+# Render Variables #
+####################
 
-######################
-# Variables Renderer #
-######################
+screen_file.extend(["screen = Screen(640, 480, 'Conveyor Dryer: Main 1')",
+                    "screen.color(Color(panelMateColorTo24Bit(0)))",
+                    ""])
 
-# Render Screen
-screen = Screen(640, 480, pageName)
-screen.color(Color(panelMateColorTo24Bit(0)))
-
-# Render plcReferences dictionary
-plcReferences = { #GE Fanuc Reference Python Dictionary
-
-    #Output Coils
-    '%Q0056' : False,
-
-    #Discrete Internal Coils, %M in GE Fanuc PLC
-    '%M0031' : False,
-    '%M0032' : False,
-    '%M0033' : False,
-    '%M0034' : False,
-    '%M0035' : False,
-    '%M0810' : False,
-    '%M0811' : False,
-    '%M0812' : False,
-
-    #Registers, %R in GE Fanuc PLC
-    
-    '%R0102' : '[R0102]', #output divided by 10 on HMI
-    '%R0104' : '[R0104]', #output divided by 10 on HMI
-    '%R0109' : '[R0109]', #output divided by 10 on HMI
-    '%R0111' : '[R0111]', #output divided by 10 on HMI
-    '%R0114' : '[R0114]', #output divided by 10 on HMI
-    '%R0115' : '[R0115]'  #output divided by 10 on HMI
-}
-
+## Render plcReferences dictionary
+#plcReferences = { #GE Fanuc Reference Python Dictionary
+#
+#    #Output Coils
+#    '%Q0056' : False,
+#
+#    #Discrete Internal Coils, %M in GE Fanuc PLC
+#    '%M0031' : False,
+#    '%M0032' : False,
+#    '%M0033' : False,
+#    '%M0034' : False,
+#    '%M0035' : False,
+#    '%M0810' : False,
+#    '%M0811' : False,
+#    '%M0812' : False,
+#
+#    #Registers, %R in GE Fanuc PLC
+#    
+#    '%R0102' : '[R0102]', #output divided by 10 on HMI
+#    '%R0104' : '[R0104]', #output divided by 10 on HMI
+#    '%R0109' : '[R0109]', #output divided by 10 on HMI
+#    '%R0111' : '[R0111]', #output divided by 10 on HMI
+#    '%R0114' : '[R0114]', #output divided by 10 on HMI
+#    '%R0115' : '[R0115]'  #output divided by 10 on HMI
+#}
+#
 ###############################################
 # Generate Render Data for Page Visual Orders #
 ###############################################
 # make lists of vo's in elements
 
-# Create a dictionary with the visual order number as the key and a list of python code as the value
-rendered_static_graphic_data_line = Render.static_grapic_data_line(parsed_static_graphic_data_line)
+#cycling through all visual orders, in order and removing them from top_level_directory afterwards
+remove = ''
+while top_level_dictionary:
+    #remove becomes non empty (true) when below "if not" detects that the element_type sub dictionary
+    #
+    if remove:
+        top_level_dictionary.pop(remove)
+        remove = ''
+    for element_type in top_level_dictionary:
+        if not top_level_dictionary[element_type]:  #the aforementioned "if not" that triggers removal of the empty sub element
+            remove = element_type
+            break 
+        else:
+            vo_to_render, top_level_dictionary = lowest_visual_order(top_level_dictionary)
 
-rendered_static_graphic_data_rectangle = Render.static_graphic_data_rectangle(parsed_static_graphic_data_rectangle)
+    current_vo_type = list(vo_to_render.keys())[0] #getting the type for the current visual order
 
-rendered_static_graphic_data_text = Render.static_graphic_data_text(parsed_static_graphic_data_text)
+    if current_vo_type == 'lines':
+        
+        print(Render.static_grapic_data_line(vo_to_render[current_vo_type]))
+        screen_file.extend(Render.static_grapic_data_line(vo_to_render[current_vo_type]))
 
-rendered_inicator = Render.variable_sized_indicator(parsed_inicator)
+#    elif current_vo_type == 'rectangles':
+#        screen_file.extend(Render.static_graphic_data_rectangle(vo_to_render[current_vo_type]))
+#        
+#    elif current_vo_type == 'text':
+#        screen_file.extend(Render.static_graphic_data_text(vo_to_render[current_vo_type]))
+#        
+#    elif current_vo_type == 'indicator':
+#        screen_file.extend(Render.variable_sized_indicator(vo_to_render[current_vo_type]))
+#        
+#    elif current_vo_type == 'readout':
+#        screen_file.extend(Render.variable_sized_readout(vo_to_render[current_vo_type]))
+#        
+#    elif current_vo_type == 'control_button':
+#        screen_file.extend(Render.variable_sized_control_button(vo_to_render[current_vo_type]))
+#        
+#    elif current_vo_type == 'graphic':
+#        screen_file.extend(Render.variable_sized_graphic(vo_to_render[current_vo_type]))
+           
 
-rendered_readout = Render.variable_sized_readout(parsed_readout)
+#
+## depending on what current VO is, then call appropriate renderer for that VO and render to python source
+#
+#
+#############################
+## Render final PyDraw code #
+#############################
+screen_file.extend(["fps = 30",
+                    "running = True",
+                    "while running:",
+                    "    screen.update()",
+                    "    screen.sleep(1 / fps)",
+                    "    if (screen.size() == (-1, -1)): # exit when screen closes",
+                    "        break"])
 
-rendered_control_button = Render.variable_sized_control_button()
+###############
+# Render Page #
+###############
 
-rendered_graphic = Render.variable_sized_graphic()
-
-# depending on what current VO is, then call appropriate renderer for that VO and render to python source
-
-
-############################
-# Render final PyDraw code #
-############################
-# To be rendered to py file
-# fps = 30
-# running = True
-# while running:
-#     screen.update()
-#     screen.sleep(1 / fps)
-#     if (screen.size() == (-1, -1)): # exit when screen closes
-#         break
+with open (pageFile, 'w') as pageFilePy_file:
+    pageFilePy_file.writelines(line + "\n" for line in screen_file)
