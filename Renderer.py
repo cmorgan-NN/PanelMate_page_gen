@@ -20,7 +20,9 @@ class Render:
     
 
     def static_graphic_data_text(parsed_data):
-        return parsed_data
+        #returns a tuple of a list of rendered string(s) and a list of plc_reference(s)
+        return Static_Graphic_Data_Text.render_visual_order(parsed_data)
+        
     
 
     def variable_sized_indicator(parsed_data):

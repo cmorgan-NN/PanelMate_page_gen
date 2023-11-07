@@ -1,4 +1,4 @@
-#TODO: Create Static Graphic Data Text Elements parser
+# Static Graphic Data Text Elements parser
 
 from Sub_Parsers import *
 from Parser_Utility import *

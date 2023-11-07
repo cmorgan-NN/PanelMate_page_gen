@@ -23,14 +23,6 @@
 # Top_Level_Directory/Variable-Sized_Graphic_Template.rpc
 # Top_Level_Directory/Variable-Sized_Control_Button_Template.rpc
 
-#TODO:-[X]- create Static_Grapic_Data_Line_Elements.rpc parser
-#TODO:-[X]- create Static_Grapic_Data_Rectangle_Elements.rpc parser
-#TODO:-[X]- create Static_Grapic_Data_Text_Elements.rpc parser
-#TODO:-[X]- create Variable-Sized_Indicator_Template.rpc parser
-#TODO:-[X]- create Variable-Sized_Readout_Template.rpc parser
-#TODO:-[X]- create Variable-Sized_Graphic_Template.rpc parser
-#TODO:-[X]- create Variable-Sized_Control_Button_Template.rpc parser
-
 #########
 # Begin #
 #########
@@ -90,6 +82,19 @@ def lowest_visual_order(top_level_dictionary):
     lowest_visual_order_return = top_level_dictionary[lowest_vo_element_type_return].pop(str(lowest_visual_order))       
     return_element = { lowest_vo_element_type_return : lowest_visual_order_return }     
     return ((return_element, top_level_dictionary))
+
+def render_plc_references(plc_reference, rendered_references):
+    #function to render plc references to the rendered_references list
+    if plc_reference[:2] == '%Q':
+        rendered_references.extend(["    '" + plc_reference + 
+                                   "' : False,"])
+    elif plc_reference[:2] == '%M':
+        rendered_references.extend(["    '" + plc_reference + 
+                                   "' : False,"])
+    elif plc_reference[:2] == '%R':
+        rendered_references.extend(["    '" + plc_reference + 
+                                   "' : '["+ +"'],"])
+    return rendered_references
 
 ###################
 # File Operations #
@@ -188,21 +193,29 @@ for file in rpc_files_to_parse:
 # Pre Render #
 ##############
 
-# create list for final screen file render
-screen_file = []
+# create lists for final screen file render
+rendered_general = []
+rendered_variables = []
+rendered_references = []
+rendered_draw_data = []
+rendered_end = []
+
+rendered_screen = [rendered_general, rendered_variables,
+                   rendered_references, rendered_draw_data, 
+                   rendered_end]
 
 #######################
 # Render Dependancies #
 #######################
 
-screen_file.append('from pydraw import *')
+rendered_general.append('from pydraw import *')
 
 
 ###############################
 # Render Function Definitions #
 ###############################
 
-screen_file.extend([
+rendered_general.extend([
     "",
     "# Function for changing panelmate report colors (aka 'pen colors') ",
     "#   to standard 24-bit/HTML colors",
@@ -228,36 +241,49 @@ screen_file.extend([
 # Render Variables #
 ####################
 
-screen_file.extend(["screen = Screen(640, 480, 'Page: " + pageDir + "')",
+rendered_variables.extend(["screen = Screen(640, 480, 'Page: " + pageDir + "')",
                     "screen.color(Color(panelMateColorTo24Bit(0)))",
                     ""])
 
 ## Render plcReferences dictionary
-#plcReferences = { #GE Fanuc Reference Python Dictionary
-#
-#    #Output Coils
-#    '%Q0056' : False,
-#
-#    #Discrete Internal Coils, %M in GE Fanuc PLC
-#    '%M0031' : False,
-#    '%M0032' : False,
-#    '%M0033' : False,
-#    '%M0034' : False,
-#    '%M0035' : False,
-#    '%M0810' : False,
-#    '%M0811' : False,
-#    '%M0812' : False,
-#
-#    #Registers, %R in GE Fanuc PLC
-#    
-#    '%R0102' : '[R0102]', #output divided by 10 on HMI
-#    '%R0104' : '[R0104]', #output divided by 10 on HMI
-#    '%R0109' : '[R0109]', #output divided by 10 on HMI
-#    '%R0111' : '[R0111]', #output divided by 10 on HMI
-#    '%R0114' : '[R0114]', #output divided by 10 on HMI
-#    '%R0115' : '[R0115]'  #output divided by 10 on HMI
-#}
-#
+if rendered_references:
+    rendered_variables.extend(["plc_references = { #GE Fanuc Reference Python Dictionary"])
+    rendered_variables.extend(["    #Output Coils"])
+    #TODO: write function to parse plc refereces from rendered data
+    #     and render them to the plc_references dictionary
+    #     use nested lists from rendered_variables:
+    #     or maybe a dictionary?
+    
+
+    #     in the fashion of the following example:                      
+    #
+    #    #Output Coils
+    #    '%Q0056' : False,
+    #
+    #    #Discrete Internal Coils, %M in GE Fanuc PLC
+    #    '%M0031' : False,
+    #    '%M0032' : False,
+    #    '%M0033' : False,
+    #    '%M0034' : False,
+    #    '%M0035' : False,
+    #    '%M0810' : False,
+    #    '%M0811' : False,
+    #    '%M0812' : False,
+    #
+    #    #Registers, %R in GE Fanuc PLC
+    #    
+    #    '%R0102' : '[R0102]', #output divided by 10 on HMI
+    #    '%R0104' : '[R0104]', #output divided by 10 on HMI
+    #    '%R0109' : '[R0109]', #output divided by 10 on HMI
+    #    '%R0111' : '[R0111]', #output divided by 10 on HMI
+    #    '%R0114' : '[R0114]', #output divided by 10 on HMI
+    #    '%R0115' : '[R0115]'  #output divided by 10 on HMI
+    rendered_variables.extend(["}"])
+          
+            
+    
+
+
 ###############################################
 # Generate Render Data for Page Visual Orders #
 ###############################################
@@ -280,14 +306,19 @@ while top_level_dictionary:
 
         current_vo_type = list(vo_to_render.keys())[0] #getting the type for the current visual order
 
+        # start rendering different types of visual orders
         if current_vo_type == 'lines':        
-            screen_file.extend(Render.static_grapic_data_line(vo_to_render[current_vo_type]))
+            rendered_draw_data.extend(Render.static_grapic_data_line(vo_to_render[current_vo_type]))
 
         elif current_vo_type == 'rectangles':
-            screen_file.extend(Render.static_graphic_data_rectangle(vo_to_render[current_vo_type]))
-#        
-#    elif current_vo_type == 'text':
-#        screen_file.extend(Render.static_graphic_data_text(vo_to_render[current_vo_type]))
+            rendered_draw_data.extend(Render.static_graphic_data_rectangle(vo_to_render[current_vo_type]))
+        
+        elif current_vo_type == 'text':
+            rendered_draw_data_text, rendered_references = Render.static_graphic_data_text(vo_to_render[current_vo_type])
+            
+            rendered_draw_data.extend(rendered_draw_data_text)
+            rendered_references.extend(rendered_references)
+
 #        
 #    elif current_vo_type == 'indicator':
 #        screen_file.extend(Render.variable_sized_indicator(vo_to_render[current_vo_type]))
@@ -309,7 +340,7 @@ while top_level_dictionary:
 #############################
 ## Render final PyDraw code #
 #############################
-screen_file.extend(["fps = 30",
+rendered_end.extend(["fps = 30",
                     "running = True",
                     "while running:",
                     "    screen.update()",
@@ -322,4 +353,5 @@ screen_file.extend(["fps = 30",
 ###############
 
 with open (pageFile, 'w') as pageFilePy_file:
-    pageFilePy_file.writelines(line + "\n" for line in screen_file)
+    for rendered_list in rendered_screen:
+        pageFilePy_file.writelines(line + "\n" for line in rendered_list)
