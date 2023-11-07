@@ -228,7 +228,7 @@ screen_file.extend([
 # Render Variables #
 ####################
 
-screen_file.extend(["screen = Screen(640, 480, 'Conveyor Dryer: Main 1')",
+screen_file.extend(["screen = Screen(640, 480, 'Page: " + pageDir + "')",
                     "screen.color(Color(panelMateColorTo24Bit(0)))",
                     ""])
 
@@ -278,15 +278,13 @@ while top_level_dictionary:
         else:
             vo_to_render, top_level_dictionary = lowest_visual_order(top_level_dictionary)
 
-    current_vo_type = list(vo_to_render.keys())[0] #getting the type for the current visual order
+        current_vo_type = list(vo_to_render.keys())[0] #getting the type for the current visual order
 
-    if current_vo_type == 'lines':
-        
-        print(Render.static_grapic_data_line(vo_to_render[current_vo_type]))
-        screen_file.extend(Render.static_grapic_data_line(vo_to_render[current_vo_type]))
+        if current_vo_type == 'lines':        
+            screen_file.extend(Render.static_grapic_data_line(vo_to_render[current_vo_type]))
 
-#    elif current_vo_type == 'rectangles':
-#        screen_file.extend(Render.static_graphic_data_rectangle(vo_to_render[current_vo_type]))
+        elif current_vo_type == 'rectangles':
+            screen_file.extend(Render.static_graphic_data_rectangle(vo_to_render[current_vo_type]))
 #        
 #    elif current_vo_type == 'text':
 #        screen_file.extend(Render.static_graphic_data_text(vo_to_render[current_vo_type]))

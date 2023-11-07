@@ -11,12 +11,12 @@ from Static_Graphic_Data_Text_Elements_Renderer import *
 class Render:
     
     def static_grapic_data_line(parsed_data):
-        return render_visual_order(parsed_data)
+        return Static_Graphic_Data_Line.render_visual_order(parsed_data)
          
     
 
     def static_graphic_data_rectangle(parsed_data):
-        return parsed_data
+        return Static_Graphic_Data_Rectangle.render_visual_order(parsed_data)
     
 
     def static_graphic_data_text(parsed_data):
