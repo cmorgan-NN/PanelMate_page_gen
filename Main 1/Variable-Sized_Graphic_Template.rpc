@@ -1,0 +1,220 @@
+Variable-Sized Graphic Template(s)
+1 - Main 1
+10/16/123 15:38:20 Page 14 Configuration: PM3K.PPS
+Variable-Sized Graphic Template(s) (continued)
+Visual Order: 49 X Origin: 0 Y Origin: 0 X Size: 0 Y Size: 0
+Refresh Affected Graphics Online? Yes
+Enable Conditional Visibility? No Visibility Expression:
+Control Arrow Direction: Right Control Arrow Display Flag: Always
+Alarm Device Name:
+Control Definitions
+Control
+#
+Control Label Foreground
+Color
+Background
+Color
+PLC Bit Reference
+1 7 0
+2 7 0
+3 7 0
+4 7 0
+Graphic States
+State
+#
+Symbol Name Alarm Alarm
+Ack
+Foreground
+Color
+Background
+Color
+Conditional Expression
+1 No Yes 255 255
+2 No Yes 255 255
+3 No Yes 255 255
+4 DRIVE FAULT No No 255 255 [%M0102]
+5 RUNNING No Yes 255 255 [%M0101]
+Visual Order: 50 X Origin: 0 Y Origin: 0 X Size: 0 Y Size: 0
+Refresh Affected Graphics Online? Yes
+Enable Conditional Visibility? No Visibility Expression:
+Control Arrow Direction: Right Control Arrow Display Flag: Always
+Alarm Device Name:
+Control Definitions
+Control
+#
+Control Label Foreground
+Color
+Background
+Color
+PLC Bit Reference
+1 7 0
+2 7 0
+3 7 0
+4 7 0
+Graphic States
+State
+#
+Symbol Name Alarm Alarm
+Ack
+Foreground
+Color
+Background
+Color
+Conditional Expression
+1 No Yes 255 255
+2 No Yes 255 255
+3 No Yes 255 255
+4 DRIVE FAULT No No 255 255 [%M0139]
+5 RUNNING No Yes 255 255 [%M0138]
+Visual Order: 61 X Origin: 0 Y Origin: 0 X Size: 0 Y Size: 0
+Refresh Affected Graphics Online? Yes
+Enable Conditional Visibility? No Visibility Expression:
+Control Arrow Direction: Right Control Arrow Display Flag: Always
+Alarm Device Name:
+Control Definitions
+Control
+#
+Control Label Foreground
+Color
+Background
+Color
+PLC Bit Reference
+1 7 0
+2 7 0
+1 - Main 1
+10/16/123 15:38:20 Page 15 Configuration: PM3K.PPS
+Variable-Sized Graphic Template(s) (continued)
+Control Definitions (continued)
+Control
+#
+Control Label Foreground
+Color
+Background
+Color
+PLC Bit Reference
+3 7 0
+4 7 0
+Graphic States
+State
+#
+Symbol Name Alarm Alarm
+Ack
+Foreground
+Color
+Background
+Color
+Conditional Expression
+1 No Yes 255 255
+2 No Yes 255 255
+3 No Yes 255 255
+4 DRIVE FAULT No No 255 255 [%M0133]
+5 RUNNING No Yes 255 255 [%M0132]
+Visual Order: 71 X Origin: 0 Y Origin: 0 X Size: 0 Y Size: 0
+Refresh Affected Graphics Online? Yes
+Enable Conditional Visibility? No Visibility Expression:
+Control Arrow Direction: Right Control Arrow Display Flag: Always
+Alarm Device Name:
+Control Definitions
+Control
+#
+Control Label Foreground
+Color
+Background
+Color
+PLC Bit Reference
+1 7 0
+2 7 0
+3 7 0
+4 7 0
+Graphic States
+State
+#
+Symbol Name Alarm Alarm
+Ack
+Foreground
+Color
+Background
+Color
+Conditional Expression
+1 No Yes 255 255
+2 No Yes 255 255
+3 No Yes 255 255
+4 DRIVE FAULT No No 255 255 [%M0107]
+5 RUNNING No Yes 255 255 [%M0106]
+Visual Order: 81 X Origin: 0 Y Origin: 0 X Size: 0 Y Size: 0
+Refresh Affected Graphics Online? Yes
+Enable Conditional Visibility? No Visibility Expression:
+Control Arrow Direction: Right Control Arrow Display Flag: Always
+Alarm Device Name:
+Control Definitions
+Control
+#
+Control Label Foreground
+Color
+Background
+Color
+PLC Bit Reference
+1 7 0
+2 7 0
+3 7 0
+4 7 0
+Graphic States
+State
+#
+Symbol Name Alarm Alarm
+Ack
+Foreground
+Color
+Background
+Color
+Conditional Expression
+1 No Yes 255 255
+2 No Yes 255 255
+1 - Main 1
+10/16/123 15:38:20 Page 16 Configuration: PM3K.PPS
+Variable-Sized Graphic Template(s) (continued)
+Graphic States (continued)
+State
+#
+Symbol Name Alarm Alarm
+Ack
+Foreground
+Color
+Background
+Color
+Conditional Expression
+3 No Yes 255 255
+4 DRIVE FAULT No No 255 255 [%M0110]
+5 RUNNING No Yes 255 255 [%M0109]
+Visual Order: 88 X Origin: 0 Y Origin: 0 X Size: 0 Y Size: 0
+Refresh Affected Graphics Online? Yes
+Enable Conditional Visibility? No Visibility Expression:
+Control Arrow Direction: Right Control Arrow Display Flag: On Selection
+Alarm Device Name:
+Control Definitions
+Control
+#
+Control Label Foreground
+Color
+Background
+Color
+PLC Bit Reference
+1 7 0
+2 7 0
+3 7 0
+4 7 0
+Graphic States
+State
+#
+Symbol Name Alarm Alarm
+Ack
+Foreground
+Color
+Background
+Color
+Conditional Expression
+1 No Yes 255 255
+2 No Yes 255 255
+3 PURGE COMPLETE No Yes 255 255 [%M0162]
+4 PURGE FAULT Yes No 255 255 [%M0163]
+5 PURGING No Yes 255 255 [%M0161]

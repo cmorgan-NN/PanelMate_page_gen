@@ -209,29 +209,31 @@ for file in rpc_files_to_parse:
 # Pre Render #
 ##############
 
-# create lists for final screen file render
-rendered_general = []
+# page file render parts
+rendered_begining = []
+rendered_functions = []
 rendered_variables = []
-rendered_references = []
+q_references = []
+m_references = []
+r_references = []
 rendered_draw_data = []
 rendered_end = []
 
-rendered_screen = [rendered_general, rendered_variables,
-                   rendered_references, rendered_draw_data, 
-                   rendered_end]
+temporary_rendered_references = []
+
 
 #######################
 # Render Dependancies #
 #######################
 
-rendered_general.append('from pydraw import *')
+rendered_begining.append('from pydraw import *')
 
 
 ###############################
 # Render Function Definitions #
 ###############################
 
-rendered_general.extend([
+rendered_functions.extend([
     "",
     "# Function for changing panelmate report colors (aka 'pen colors') ",
     "#   to standard 24-bit/HTML colors",
@@ -260,44 +262,6 @@ rendered_general.extend([
 rendered_variables.extend(["screen = Screen(640, 480, 'Page: " + pageDir + "')",
                     "screen.color(Color(panelMateColorTo24Bit(0)))",
                     ""])
-
-## Render plcReferences dictionary
-if rendered_references:
-    rendered_variables.extend(["plc_references = { #GE Fanuc Reference Python Dictionary"])
-    rendered_variables.extend(["    #Output Coils"])
-    #TODO: write function to parse plc refereces from rendered data
-    #     and render them to the plc_references dictionary
-    #     use nested lists from rendered_variables:
-    #     or maybe a dictionary?
-    
-
-    #     in the fashion of the following example:                      
-    #
-    #    #Output Coils
-    #    '%Q0056' : False,
-    #
-    #    #Discrete Internal Coils, %M in GE Fanuc PLC
-    #    '%M0031' : False,
-    #    '%M0032' : False,
-    #    '%M0033' : False,
-    #    '%M0034' : False,
-    #    '%M0035' : False,
-    #    '%M0810' : False,
-    #    '%M0811' : False,
-    #    '%M0812' : False,
-    #
-    #    #Registers, %R in GE Fanuc PLC
-    #    
-    #    '%R0102' : '[R0102]', #output divided by 10 on HMI
-    #    '%R0104' : '[R0104]', #output divided by 10 on HMI
-    #    '%R0109' : '[R0109]', #output divided by 10 on HMI
-    #    '%R0111' : '[R0111]', #output divided by 10 on HMI
-    #    '%R0114' : '[R0114]', #output divided by 10 on HMI
-    #    '%R0115' : '[R0115]'  #output divided by 10 on HMI
-    rendered_variables.extend(["}"])
-          
-            
-    
 
 
 ###############################################
@@ -330,10 +294,15 @@ while top_level_dictionary:
             rendered_draw_data.extend(Render.static_graphic_data_rectangle(vo_to_render[current_vo_type]))
         
         elif current_vo_type == 'text':
-            rendered_draw_data_text, rendered_references = Render.static_graphic_data_text(vo_to_render[current_vo_type])
+
+            rendered_draw_data_text, rendered_reference = Render.static_graphic_data_text(vo_to_render[current_vo_type])
             
             rendered_draw_data.extend(rendered_draw_data_text)
-            rendered_references.extend(rendered_references)
+
+            #avoid duplicates and blanks in references with if
+            if (rendered_reference not in temporary_rendered_references and
+                rendered_reference != []): 
+                temporary_rendered_references.extend([rendered_reference])
 
 #        
 #    elif current_vo_type == 'indicator':
@@ -347,12 +316,63 @@ while top_level_dictionary:
 #        
 #    elif current_vo_type == 'graphic':
 #        screen_file.extend(Render.variable_sized_graphic(vo_to_render[current_vo_type]))
-           
 
-#
-## depending on what current VO is, then call appropriate renderer for that VO and render to python source
-#
-#
+#########################           
+# Render Plc References #
+#########################
+
+if temporary_rendered_references:
+    for plc_reference in temporary_rendered_references:
+        for instance in plc_reference:
+            
+            if instance[:2] == '%Q':
+                q_references.extend(["    '" + instance + 
+                                    "' : False,"])
+
+            elif instance[:2] == '%M':
+                m_references.extend(["    '" + instance + 
+                                    "' : False,"])
+
+            elif instance[:2] == '%R':
+                r_references.extend(["    '" + instance + 
+                                    "' : '["+ instance +"'],"])
+
+
+    rendered_references = []
+    #render plc reference dictionary initialization
+    rendered_references.extend(['plc_references = {',''])
+
+    #render heading comments before references
+    #NOTE: tried to do this more eligantly with a one liner but python didn't like:
+    #      ["#Output Coils (%Q in GE Fanuc PLC)"].extend(q_references.copy())
+    if q_references: 
+        q_references_p = ['    #Output Coils (%Q in GE Fanuc PLC)']
+        q_references_p.extend(q_references)
+        q_references = q_references_p.copy()
+        q_references.extend([''])
+        rendered_references.extend(q_references)
+
+    if m_references: 
+        m_references_p = ['    #Internal Coils (%M in GE Fanuc PLC)']
+        m_references_p.extend(m_references)
+        m_references = m_references_p.copy()
+        m_references.extend([''])
+        rendered_references.extend(m_references)
+    
+    if r_references: 
+        r_references_p = ["    #Registers (%R in GE Fanuc PLC)"]
+        r_references_p.extend(r_references)
+        r_references = r_references_p.copy()
+        r_references.extend([''])
+        rendered_references.extend(r_references)  
+    
+    # remove trailing comma from last reference
+    rendered_references[-2] = rendered_references[-2].rstrip(',')
+    
+    #render closing bracket
+    rendered_references.extend(['}',''])
+            
+
 #############################
 ## Render final PyDraw code #
 #############################
@@ -367,7 +387,15 @@ rendered_end.extend(["fps = 30",
 ###############
 # Render Page #
 ###############
+# page 
+rendered_page = [rendered_begining,
+                 rendered_functions,
+                 rendered_variables,
+                 rendered_references,
+                 rendered_draw_data,
+                 rendered_end]
 
 with open (pageFile, 'w') as pageFilePy_file:
-    for rendered_list in rendered_screen:
-        pageFilePy_file.writelines(line + "\n" for line in rendered_list)
+    for section in rendered_page:
+        for line in section:
+            pageFilePy_file.writelines(line + "\n")

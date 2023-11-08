@@ -1,0 +1,120 @@
+Variable-Sized Control Button Template(s)
+Visual Order: 4 X Origin: 448 Y Origin: 369 X Size: 75 Y Size: 48
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Lens Color: 18
+Control Type: Page Change Expression: 14
+Visual Order: 16 X Origin: 448 Y Origin: 416 X Size: 75 Y Size: 48
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Lens Color: 18
+Control Type: Page Change Expression: 13
+Visual Order: 17 X Origin: 362 Y Origin: 416 X Size: 75 Y Size: 48
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Lens Color: 18
+Control Type: Page Change Expression: 09
+Visual Order: 18 X Origin: 214 Y Origin: 416 X Size: 75 Y Size: 48
+Refresh Affected Graphics Online? No
+1 - Main 1
+10/16/123 15:38:20 Page 17 Configuration: PM3K.PPS
+Variable-Sized Control Button Template(s) (continued)
+Enable Conditional Visibility? No Visibility Expression:
+Lens Color: 18
+Control Type: Page Change Expression: 08
+Visual Order: 19 X Origin: 288 Y Origin: 416 X Size: 75 Y Size: 48
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Lens Color: 18
+Control Type: Page Change Expression: 06
+Visual Order: 26 X Origin: 288 Y Origin: 369 X Size: 75 Y Size: 48
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Lens Color: 18
+Control Type: Page Change Expression: 100
+Visual Order: 30 X Origin: 362 Y Origin: 369 X Size: 75 Y Size: 48
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Lens Color: 18
+Control Type: Normaly Open, Momentary Reference: [%M0988]
+Visual Order: 82 X Origin: 0 Y Origin: 369 X Size: 85 Y Size: 41
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Lens Color: 18
+Control Type: Normaly Open, Momentary Reference: [%M0233]
+Visual Order: 85 X Origin: 214 Y Origin: 369 X Size: 75 Y Size: 48
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Lens Color: 18
+Control Type: Normaly Open, Momentary Reference: [%M0260]
+Visual Order: 89 X Origin: 5 Y Origin: 277 X Size: 45 Y Size: 48
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Lens Color: 18
+Control Type: Normaly Open, Momentary Reference: [%M0800]
+Visual Order: 94 X Origin: 55 Y Origin: 277 X Size: 42 Y Size: 48
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Lens Color: 18
+Control Type: Normaly Open, Momentary Reference: [%M0801]
+Visual Order: 98 X Origin: 112 Y Origin: 277 X Size: 45 Y Size: 48
+1 - Main 1
+10/16/123 15:38:20 Page 18 Configuration: PM3K.PPS
+Variable-Sized Control Button Template(s) (continued)
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Lens Color: 18
+Control Type: Normaly Open, Momentary Reference: [%M0802]
+Visual Order: 103 X Origin: 164 Y Origin: 277 X Size: 42 Y Size: 48
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Lens Color: 18
+Control Type: Normaly Open, Momentary Reference: [%M0803]
+Visual Order: 106 X Origin: 219 Y Origin: 276 X Size: 45 Y Size: 48
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Lens Color: 18
+Control Type: Normaly Open, Momentary Reference: [%M0804]
+Visual Order: 111 X Origin: 270 Y Origin: 277 X Size: 42 Y Size: 48
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Lens Color: 18
+Control Type: Normaly Open, Momentary Reference: [%M0805]
+Visual Order: 115 X Origin: 325 Y Origin: 276 X Size: 45 Y Size: 48
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Lens Color: 18
+Control Type: Normaly Open, Momentary Reference: [%M0806]
+Visual Order: 120 X Origin: 376 Y Origin: 276 X Size: 42 Y Size: 48
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Lens Color: 18
+Control Type: Normaly Open, Momentary Reference: [%M0807]
+Visual Order: 124 X Origin: 430 Y Origin: 275 X Size: 45 Y Size: 48
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Lens Color: 18
+Control Type: Normaly Open, Momentary Reference: [%M0808]
+Visual Order: 129 X Origin: 480 Y Origin: 275 X Size: 42 Y Size: 48
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Lens Color: 18
+Control Type: Normaly Open, Momentary Reference: [%M0809]
+1 - Main 1
+10/16/123 15:38:20 Page 19 Configuration: PM3K.PPS
+Variable-Sized Control Button Template(s) (continued)
+Visual Order: 149 X Origin: 6 Y Origin: 333 X Size: 89 Y Size: 28
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? Yes Visibility Expression: [%Q0056] = 0
+Lens Color: 18
+Control Type: Toggle Reference: [%M0810]
+Visual Order: 152 X Origin: 114 Y Origin: 333 X Size: 89 Y Size: 28
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? Yes Visibility Expression: [%Q0056] = 0
+Lens Color: 18
+Control Type: Toggle Reference: [%M0811]
+Visual Order: 155 X Origin: 220 Y Origin: 333 X Size: 89 Y Size: 28
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? Yes Visibility Expression: [%Q0056] = 0
+Lens Color: 18
+Control Type: Toggle Reference: [%M0812]

@@ -9,7 +9,7 @@ class Static_Graphic_Data_Text:
         y_origin = visual_order['Y Origin']
         # refresh_affected_graphics_online = visual_order['Refresh Affected Graphics Online']
         enable_cond_visibility = visual_order['Enable Cond. Visibility']
-        visibility_expression = visual_order['Visibility Expression']
+        visibility_expression = visual_order['Visibility Expression'].lstrip('[').rstrip(']')
         # font = visual_order['Font']
         foreground_color = visual_order['Foreground Color']
         # background_color = visual_order['Background Color']
@@ -26,9 +26,11 @@ class Static_Graphic_Data_Text:
                             '.color(Color(panelMateColorTo24Bit(' + foreground_color + ')))'])
         return_list.extend(['text_element_' + vo + '.size(' + str(font_size) + ')'])
         if enable_cond_visibility == 'Yes':
-            return_list.extend(['text_element_' + vo 
-                                + '.visible(plc_references[' 
-                                + visibility_expression + '])'])
+            return_list.extend(['text_element_' + 
+                                vo +
+                                ".visible(plc_references['" +
+                                visibility_expression +
+                                "'])"])
             reference_list.extend([visibility_expression])                            
                 
         return_list.extend([''])

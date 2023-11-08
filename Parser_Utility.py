@@ -60,8 +60,11 @@ class Parser_Utility:
 
         for line in table_data[:]:
             for heading in split_headings:
-                if (line.find(heading) > -1 and
-                    line.lstrip()[0] == heading[0]):
+                if ((line.find(heading) > -1 and
+                    line.lstrip()[0] == heading[0]) or
+                    #if first character of line not a number and ends with (continued)\n
+                    (not line[0].isdigit() and
+                    line.endswith('(continued)\n'))):
                     table_data.remove(line)
                     break
         

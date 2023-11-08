@@ -1,0 +1,62 @@
+Variable-Sized Readout Template(s)
+Visual Order: 11 X Origin: 115 Y Origin: 430 X Size: 32 Y Size: 16 Font: Normal Deadband Range: 0% Alarm Ack: Yes
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Foreground Color: 2 Background Color: 0 Text Direction: Horizontal
+Decimal Places: 1
+Control Arrow Position: Left Control Arrow Display Flag: Always
+Alarm Device Name:
+Value Expression: [%R0114] / 10
+High Alarm Expression:
+Low Alarm Expression:
+Visual Order: 36 X Origin: 442 Y Origin: 165 X Size: 32 Y Size: 16 Font: Normal Deadband Range: 0% Alarm Ack: Yes
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Foreground Color: 2 Background Color: 0 Text Direction: Horizontal
+Decimal Places: 1
+Control Arrow Position: Left Control Arrow Display Flag: Always
+Alarm Device Name:
+Value Expression: [%R0109] / 10
+High Alarm Expression:
+Low Alarm Expression:
+Visual Order: 42 X Origin: 22 Y Origin: 165 X Size: 32 Y Size: 16 Font: Normal Deadband Range: 0% Alarm Ack: Yes
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Foreground Color: 2 Background Color: 0 Text Direction: Horizontal
+Decimal Places: 1
+1 - Main 1
+10/16/123 15:38:20 Page 13 Configuration: PM3K.PPS
+Variable-Sized Readout Template(s) (continued)
+Control Arrow Position: Left Control Arrow Display Flag: Always
+Alarm Device Name:
+Value Expression: [%R0115] / 10
+High Alarm Expression:
+Low Alarm Expression:
+Visual Order: 55 X Origin: 127 Y Origin: 166 X Size: 32 Y Size: 16 Font: Normal Deadband Range: 0% Alarm Ack: Yes
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Foreground Color: 2 Background Color: 0 Text Direction: Horizontal
+Decimal Places: 1
+Control Arrow Position: Left Control Arrow Display Flag: Always
+Alarm Device Name:
+Value Expression: [%R0111] /10
+High Alarm Expression:
+Low Alarm Expression:
+Visual Order: 66 X Origin: 232 Y Origin: 165 X Size: 32 Y Size: 16 Font: Normal Deadband Range: 0% Alarm Ack: Yes
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Foreground Color: 2 Background Color: 0 Text Direction: Horizontal
+Decimal Places: 1
+Control Arrow Position: Left Control Arrow Display Flag: Always
+Alarm Device Name:
+Value Expression: [%R0102] /10
+High Alarm Expression:
+Low Alarm Expression:
+Visual Order: 76 X Origin: 337 Y Origin: 165 X Size: 32 Y Size: 16 Font: Normal Deadband Range: 0% Alarm Ack: Yes
+Refresh Affected Graphics Online? No
+Enable Conditional Visibility? No Visibility Expression:
+Foreground Color: 2 Background Color: 0 Text Direction: Horizontal
+Decimal Places: 1
+Control Arrow Position: Left Control Arrow Display Flag: Always
+Alarm Device Name:
+Value Expression: [%R0104] / 10

@@ -1,0 +1,100 @@
+Text Element(s)
+Visual
+Order
+X
+Origin
+Y
+Origin
+Refresh Affected
+Graphics Online?
+Enable Cond.
+ Visibility?
+Visibility
+Expression
+Font Foreground
+Color
+Background
+Color
+Text
+2 17 205 Yes Yes [%M0031] Normal 7 4 DRIVE NOT
+3 25 221 No Yes [%M0031] Normal 7 4 ENABLED
+5 470 374 No No Normal 0 18 NEXT
+6 470 392 No No Normal 0 18 PAGE
+7 132 388 No No Normal 3 0 LINE
+8 129 403 No No Normal 3 0 SPEED
+10 156 431 No No Normal 2 0 YPM
+20 225 421 No No Normal 0 18 EXHAUST
+21 307 420 No No Normal 0 18 CIRC.
+22 309 439 No No Normal 0 18 FANS
+23 237 438 No No Normal 0 18 FAN
+24 375 421 No No Normal 0 18 BURNER
+1 - Main 1
+10/16/123 15:38:20 Page 21 Configuration: PM3K.PPS
+Text Element(s) (continued)
+Visual
+Order
+X
+Origin
+Y
+Origin
+Refresh Affected
+Graphics Online?
+Enable Cond.
+ Visibility?
+Visibility
+Expression
+Font Foreground
+Color
+Background
+Color
+Text
+25 373 438 No No Normal 0 18 CONTROL
+27 469 421 No No Normal 0 18 LINE
+28 466 439 No No Normal 0 18 SPEED
+29 302 383 No No Normal 0 18 ALARMS
+31 379 375 No No Normal 0 18 ALARM
+32 379 389 No No Normal 0 18 RESET
+35 481 166 No No Normal 2 0 YPM
+39 444 124 No No Double High 0 18 FOLDER
+41 61 165 No No Normal 2 0 YPM
+45 16 124 No No Double High 0 18 ENTRY PAD
+46 25 221 No Yes [%M0031] Normal 7 4 IN AUTO
+47 445 221 No Yes [%M0035] Normal 7 4 IN AUTO
+48 437 206 Yes Yes [%M0035] Normal 7 4 DRIVE NOT
+52 122 206 Yes Yes [%M0032] Normal 7 4 DRIVE NOT
+54 166 166 No No Normal 2 0 YPM
+59 106 124 No No Double High 0 18 STEAM ROLLS 1
+60 130 222 No Yes [%M0032] Normal 7 4 IN AUTO
+63 227 207 Yes Yes [%M0033] Normal 7 4 DRIVE NOT
+65 271 166 No No Normal 2 0 YPM
+69 211 124 No No Double High 0 18 STEAM ROLLS 2
+70 235 221 No Yes [%M0033] Normal 7 4 IN AUTO
+73 332 206 Yes Yes [%M0034] Normal 7 4 DRIVE NOT
+75 376 166 No No Normal 2 0 YPM
+79 332 124 No No Double High 0 18 PULL ROLL
+80 340 221 No Yes [%M0034] Normal 7 4 IN AUTO
+83 23 373 No No Normal 0 18 DRIVE
+84 7 388 No No Normal 0 18 FLT RESET
+86 227 375 No No Normal 0 18 MASTER
+87 231 390 No No Normal 0 18 RESET
+93 5 257 No No Normal 7 255 Speed Ratio
+102 116 257 No No Normal 7 255 Speed Ratio
+110 221 257 No No Normal 7 255 Speed Ratio
+119 325 257 No No Normal 7 255 Speed Ratio
+128 430 257 No No Normal 7 255 Speed Ratio
+138 14 307 No No Normal 0 18 INC
+139 63 282 No No Normal 0 18 DEC
+140 123 306 No No Normal 0 18 INC
+141 229 304 No No Normal 0 18 INC
+142 335 304 No No Normal 0 18 INC
+143 443 301 No No Normal 0 18 INC
+144 172 280 No No Normal 0 18 DEC
+145 279 280 No No Normal 0 18 DEC
+146 384 281 No No Normal 0 18 DEC
+147 490 280 No No Normal 0 18 DEC
+150 22 339 No Yes [%M0810] =0 Normal 0 18 FORWARD
+151 22 339 No Yes [%M0810] =1 Normal 0 18 REVERSE
+153 130 339 No Yes [%M0811] =0 Normal 0 18 FORWARD
+154 130 339 No Yes [%M0811] =1 Normal 0 18 REVERSE
+156 236 339 No Yes [%M0812] =0 Normal 0 18 FORWARD
+157 236 339 No Yes [%M0812] =1 Normal 0 18 REVERSE

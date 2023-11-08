@@ -43,9 +43,16 @@ class Static_Graphic_Data_Text:
                     index_modifier =+ 1 
                     parsed_element = { member : ''}
 
+                    #TODO: sometimes visibility expressions have more than just a reference in them,
+                    # so they need to be handled separately
+
                 elif member != 'Text':    
                     parsed_element = Sub_Parsers.table_parser(member, index, line)
-
+                    if member == 'Font' and parsed_element.get(member) == 'Double':
+                        #since parsing trips on the space, doube high font needs to be
+                        #handled separately
+                        parsed_element = { member : 'Double High'}
+                        index_modifier =+ 1
                 elif member == 'Text':
                     parsed_element = { member : line[current_line_pos - 1:].strip() }
 
