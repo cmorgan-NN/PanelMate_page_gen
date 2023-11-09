@@ -321,6 +321,7 @@ while top_level_dictionary:
 # Render Plc References #
 #########################
 
+rendered_references = []
 if temporary_rendered_references:
     for plc_reference in temporary_rendered_references:
         for instance in plc_reference:
@@ -338,7 +339,6 @@ if temporary_rendered_references:
                                     "' : '["+ instance +"'],"])
 
 
-    rendered_references = []
     #render plc reference dictionary initialization
     rendered_references.extend(['plc_references = {',''])
 

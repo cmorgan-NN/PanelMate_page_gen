@@ -26,7 +26,23 @@ class Static_Graphic_Data_Text:
                             '.color(Color(panelMateColorTo24Bit(' + foreground_color + ')))'])
         return_list.extend(['text_element_' + vo + '.size(' + str(font_size) + ')'])
         if enable_cond_visibility == 'Yes':
-            return_list.extend(['text_element_' + 
+            if '] =' in visibility_expression:
+                if visibility_expression[len(visibility_expression) - 1] == '0':
+                    # [visibility_expression] = 0
+                    visibility_expression = visibility_expression[:visibility_expression.find('] =')]
+                    return_list.extend(['text_element_' +
+                                        vo +
+                                        ".visible(not plc_references['" +
+                                        visibility_expression + "'])"])
+                else:
+                    # [visibility_expression] = 1
+                    visibility_expression = visibility_expression[:visibility_expression.find('] =')]
+                    return_list.extend(['text_element_' + 
+                                        vo +
+                                        ".visible(plc_references['" +
+                                        visibility_expression + "'])"])
+            else:
+                return_list.extend(['text_element_' + 
                                 vo +
                                 ".visible(plc_references['" +
                                 visibility_expression +
