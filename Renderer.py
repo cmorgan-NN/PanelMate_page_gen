@@ -34,7 +34,7 @@ class Render:
     
 
     def variable_sized_control_button(parsed_data):
-        return parsed_data
+        return Variable_Sized_Control_Button.render_visual_order(parsed_data)
     
 
     def variable_sized_graphic(parsed_data):

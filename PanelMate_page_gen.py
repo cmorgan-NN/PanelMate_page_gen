@@ -39,6 +39,14 @@
 # an engineer or tech analyse which PLC references, or tags, are used to 
 # communicate between said HMI and any PLCs it is connected to.
 
+################
+# Global TODOs #
+################
+
+# TODO: change all renderers to us vo_type_string variable instead of hard coded strings
+# by passing vo_type through
+# FIXME: reference coils not showing up for VS Control Buttons
+
 #########
 # Begin #
 #########
@@ -151,7 +159,7 @@ if (os.path.isfile(pageFile)):
 #########
 # Parse #
 #########
-
+#TODO: maybe make this a method with input of pageDir and output of top_level_dictionary
 top_level_dictionary = {}
 rpc_files_to_parse = []
 
@@ -311,8 +319,16 @@ while top_level_dictionary:
 #    elif current_vo_type == 'readout':
 #        screen_file.extend(Render.variable_sized_readout(vo_to_render[current_vo_type]))
 #        
-#    elif current_vo_type == 'control_button':
-#        screen_file.extend(Render.variable_sized_control_button(vo_to_render[current_vo_type]))
+        elif current_vo_type == 'control_button':
+
+            rendered_draw_data_control_button, rendered_reference = Render.variable_sized_control_button(vo_to_render[current_vo_type])
+
+            rendered_draw_data.extend(rendered_draw_data_control_button)
+
+            #avoid duplicates and blanks in references with if
+            if (rendered_reference not in temporary_rendered_references and
+                rendered_reference != []): 
+                temporary_rendered_references.extend([rendered_reference])
 #        
 #    elif current_vo_type == 'graphic':
 #        screen_file.extend(Render.variable_sized_graphic(vo_to_render[current_vo_type]))
@@ -320,6 +336,8 @@ while top_level_dictionary:
 #########################           
 # Render Plc References #
 #########################
+#TODO: make this a method with input of themporary_rendered_references
+#      and output of rendered_referencecs
 
 rendered_references = []
 if temporary_rendered_references:
