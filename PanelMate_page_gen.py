@@ -328,7 +328,7 @@ while top_level_dictionary:
             #avoid duplicates and blanks in references with if
             if (rendered_reference not in temporary_rendered_references and
                 rendered_reference != []): 
-                temporary_rendered_references.extend([rendered_reference])
+                temporary_rendered_references.extend([rendered_reference]) #FIXME: It's passing back extra blanks in rendered_reference
 #        
 #    elif current_vo_type == 'graphic':
 #        screen_file.extend(Render.variable_sized_graphic(vo_to_render[current_vo_type]))
@@ -336,7 +336,7 @@ while top_level_dictionary:
 #########################           
 # Render Plc References #
 #########################
-#TODO: make this a method with input of themporary_rendered_references
+#TODO: make this a method with input of temporary_rendered_references
 #      and output of rendered_referencecs
 
 rendered_references = []
