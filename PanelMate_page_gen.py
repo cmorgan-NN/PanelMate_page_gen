@@ -7,8 +7,9 @@
 ####################### 
 # Theory of Operation #
 #######################
-# Take a directory full of Raw PanelMate Configurations files, which are different sections of a panelmate configuration PDF copied
-# and pasted into a file with an extension of .rpc, as an input and create a python program that generates a rendered PanelMate HMI Page graphical output
+# Take a directory full of Raw PanelMate Configurations files, which are different sections of a panelmate configuration 
+# PDF copied and pasted into a file with an extension of .rpc, as an input and create a python program that generates a 
+# rendered PanelMate HMI Page graphical output
 # 1. parse each RPC as a seperate dictionary nested within a main page dictionary (name derived from top level directory)
 # 2. Iterate through each nested dictionary, rendering the textual python code to a .py file
 
@@ -57,6 +58,7 @@
 
 import sys
 import os.path
+import winsound
 from Parser import *
 from Renderer import *
 
@@ -316,9 +318,11 @@ while top_level_dictionary:
 #    elif current_vo_type == 'indicator':
 #        screen_file.extend(Render.variable_sized_indicator(vo_to_render[current_vo_type]))
 #        
-#    elif current_vo_type == 'readout':
-#        screen_file.extend(Render.variable_sized_readout(vo_to_render[current_vo_type]))
-#        
+        elif current_vo_type == 'readout':
+            
+            rendered_draw_data_readout, rendered_reference = Render.variable_sized_readout(vo_to_render[current_vo_type])
+        
+            
         elif current_vo_type == 'control_button':
 
             rendered_draw_data_control_button, rendered_reference = Render.variable_sized_control_button(vo_to_render[current_vo_type])
@@ -417,3 +421,5 @@ with open (pageFile, 'w') as pageFilePy_file:
     for section in rendered_page:
         for line in section:
             pageFilePy_file.writelines(line + "\n")
+
+winsound.Beep(440, 500)
