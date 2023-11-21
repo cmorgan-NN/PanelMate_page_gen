@@ -235,8 +235,11 @@ temporary_rendered_references = []
 #######################
 # Render Dependancies #
 #######################
-
-rendered_begining.append('from pydraw import *')
+rendered_begining.extend(["###########"])
+rendered_begining.extend(["# Imports #"])
+rendered_begining.extend(["###########", ""])
+rendered_begining.extend(["from pydraw import *"])
+rendered_begining.extend(["",""])
 
 
 ###############################
@@ -244,6 +247,9 @@ rendered_begining.append('from pydraw import *')
 ###############################
 
 rendered_functions.extend([
+    "#############",
+    "# Functions #",
+    "#############",
     "",
     "# Function for changing panelmate report colors (aka 'pen colors') ",
     "#   to standard 24-bit/HTML colors",
@@ -262,12 +268,17 @@ rendered_functions.extend([
     "        return panelMatePalette[panelMateColor]",
     "    else:",
     "        return '#000000'",
-    ""])
+    "",""])
 
 
 ####################
 # Render Variables #
 ####################
+
+rendered_variables.extend(["#############",
+                           "# Variables #",
+                           "#############",
+                           ""])
 
 rendered_variables.extend(["screen = Screen(640, 480, 'Page: " + pageDir + "')",
                     "screen.color(Color(panelMateColorTo24Bit(0)))",
@@ -277,6 +288,10 @@ rendered_variables.extend(["screen = Screen(640, 480, 'Page: " + pageDir + "')",
 ###############################################
 # Generate Render Data for Page Visual Orders #
 ###############################################
+rendered_draw_data.extend(["#################"])
+rendered_draw_data.extend(["# Visual Orders #"])
+rendered_draw_data.extend(["#################",""])
+
 # make lists of vo's in elements
 
 #cycling through all visual orders, in order and removing them from top_level_directory afterwards
@@ -322,6 +337,13 @@ while top_level_dictionary:
             
             rendered_draw_data_readout, rendered_reference = Render.variable_sized_readout(vo_to_render[current_vo_type])
         
+            rendered_draw_data.extend(rendered_draw_data_readout)
+
+            #avoid duplicates and blanks in references with if
+            if (rendered_reference not in temporary_rendered_references and
+                rendered_reference != []): 
+                temporary_rendered_references.extend([rendered_reference])
+
             
         elif current_vo_type == 'control_button':
 
@@ -358,11 +380,11 @@ if temporary_rendered_references:
 
             elif instance[:2] == '%R':
                 r_references.extend(["    '" + instance + 
-                                    "' : '["+ instance +"'],"])
+                                    "' : '["+ instance +"]',"])
 
 
     #render plc reference dictionary initialization
-    rendered_references.extend(['plc_references = {',''])
+    rendered_references.extend(['plc_references = { #GE Fanuc Reference Python Dictionary',''])
 
     #render heading comments before references
     #NOTE: tried to do this more eligantly with a one liner but python didn't like:
@@ -392,13 +414,17 @@ if temporary_rendered_references:
     rendered_references[-2] = rendered_references[-2].rstrip(',')
     
     #render closing bracket
-    rendered_references.extend(['}',''])
+    rendered_references.extend(['}','',''])
             
 
 #############################
 ## Render final PyDraw code #
 #############################
-rendered_end.extend(["fps = 30",
+
+rendered_end.extend(["##########",
+                    "# Render #",
+                    "##########",
+                    "fps = 30",
                     "running = True",
                     "while running:",
                     "    screen.update()",

@@ -25,7 +25,9 @@ class Variable_Sized_Readout:
         control_arrow_position = visual_order['Control Arrow Position']
         control_arrow_display_flag = visual_order['Control Arrow Display Flag']
         alarm_device_name = visual_order['Alarm Device Name']
-        value_expression = visual_order['Value Expression']
+        value_expression = visual_order['Value Expression'][
+            visual_order['Value Expression'].find('%'):
+            visual_order['Value Expression'].find('%') + 6]
 #        high_alarm_expression = visual_order['High Alarm Expression']
 #        low_alarm_expression = visual_order['Low Alarm Expression']
 
@@ -44,7 +46,7 @@ class Variable_Sized_Readout:
 
         return_list.extend(['# Visual Order ' + vo ])
         return_list.extend([vo_type_string + vo + ' = Text(screen, '
-                            + 'plc_references["' + value_expression + '"], ' 
+                            + "plc_references['" + value_expression + "'], " 
                             + x_origin +
                             ', ' + y_origin + ')'])
 #                            ', ' + x_size +
