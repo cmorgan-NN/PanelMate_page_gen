@@ -269,6 +269,7 @@ rendered_variables.extend(
     [
         "screen = Screen(640, 480, 'Page: " + pageDir + "')",
         "screen.color(Color(panelMateColorTo24Bit(0)))",
+        "RECTANGLES_IN_BACK = True",
         "",
     ]
 )
