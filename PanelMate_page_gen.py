@@ -11,7 +11,7 @@
 # PDF copied and pasted into a file with an extension of .rpc, as an input and create a python program that generates a
 # rendered PanelMate HMI Page graphical output
 # 1. parse each RPC as a seperate dictionary nested within a main page dictionary (name derived from top level directory)
-# 2. Iterate through each nested dictionary, rendering the textual python code to a .py file
+# 2. Iterate through each nested dictionary, rendering the python code to a .py file
 
 # Tree View of inputs:
 # Top_Level_Directory (HMI Page name is derived from this)
@@ -322,8 +322,10 @@ while top_level_dictionary:
                     and rendered_reference != []
                 ):
                     temporary_rendered_references.extend([rendered_reference])
-            #    elif current_vo_type == 'indicator':
-            #        screen_file.extend(Render.variable_sized_indicator(vo_to_render[current_vo_type]))
+            case "indicator":
+                rendered_draw_data.extend(
+                    Render.variable_sized_indicator(vo_to_render[current_vo_type])
+                )
             case "readout":
                 (
                     rendered_draw_data_readout,
